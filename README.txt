@@ -12,4 +12,4 @@ If you are unsure about how you are allowed to use the assets please see the Usa
 
 I hope you will enjoy the contents of the pack!
 
-(This pack was downloaded from http://devassets.com/.)
+(This pack was downloaded from http://devassets.com/.) Yes!
