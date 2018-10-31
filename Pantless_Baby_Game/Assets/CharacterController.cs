@@ -22,7 +22,7 @@ public class CharacterController : PhysicsScript {
         ComputeVelocity();
 	}
 
-    protected void ComputeVelocity() //protected override void
+    protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
 
@@ -40,11 +40,13 @@ public class CharacterController : PhysicsScript {
             }
         }
 
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
+        if (velocity.x > 0.01f)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-            //SpriteRenderer.transform.localScale.y = -1;
+            spriteRenderer.flipX = false;
+        }
+        else if (velocity.x < -0.01f)
+        {
+            spriteRenderer.flipX = true;
         }
 
         //animator.SetBool("grounded", grounded);
