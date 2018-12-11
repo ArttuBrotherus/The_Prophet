@@ -14,7 +14,6 @@ public class CharacterController : PhysicsScript {
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,9 +47,6 @@ public class CharacterController : PhysicsScript {
         {
             spriteRenderer.flipX = true;
         }
-
-        //animator.SetBool("grounded", grounded);
-        //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
     }
