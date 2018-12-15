@@ -17,12 +17,22 @@ public class BP_Collision : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.name == "ilkka")
+        {
+            Debug.Log("Ilkka");
+            var physics = col.GetComponent<PhysicsScript>();
+            physics.StopIfGoingDown();
+        }
+
+        return;
+
+
         BoxCollider2D parentCollider = gameObject.GetComponentInParent(typeof(BoxCollider2D)) as BoxCollider2D;
 
-        rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        //Debug.Log(rb.velocity);
+        
+        Debug.Log(rb.velocity);
         if (rb.velocity.y > 0)
         {
             parentCollider.enabled = false;

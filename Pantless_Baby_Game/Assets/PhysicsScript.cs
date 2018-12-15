@@ -35,13 +35,19 @@ public class PhysicsScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         targetVelocity = Vector2.zero;
-        ComputeVelocity();
     }
 
-    protected virtual void ComputeVelocity()
+    public virtual void StopIfGoingDown()
     {
-
+        Debug.Log(velocity);
+        if (velocity.y < 0) // falling? going down?
+        {
+            velocity = new Vector2(velocity.x, -velocity.y);
+            Debug.Log("----------------RESET---------------------");
+        }
     }
+
+    protected virtual void ComputeVelocity() { }
 
     void FixedUpdate()
     {
