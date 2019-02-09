@@ -1215,7 +1215,7 @@ MonoBehaviour:
   minGroundNormalY: 0.65
   gravityModifier: 0.3
   maxSpeed: 7
-  jumpTakeOffSpeed: 7
+  jumpTakeOffSpeed: 5
 --- !u!4 &551754004
 Transform:
   m_ObjectHideFlags: 0

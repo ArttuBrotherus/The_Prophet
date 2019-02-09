@@ -75,7 +75,14 @@ public class PhysicsScript : MonoBehaviour {
             Debug.Log( "Exiting platform" );
             if ( velocity.y > 0 ) { // going upward?
                 // Remove istrigger, making Unity handle the platform collisions 
-                // so platform becomes "solid"
+                // so platform becomes "solid". However, with this solution
+                // keeps the trigger-off status forever which is not desired.
+                // ALso it requires one jump from below to make the platform solid in the first place.
+                // There are two possibly better alternatives:
+                // a)  Use Physics.IgnoreCollision conditionally on OnTriggerEnter2D and OnTriggerExit2D
+                // b)  Use different lauers conditionally.
+                // See:
+                // https://forum.unity.com/threads/layers-collision-and-one-way-platforms-a-question.71790/
                 collision.GetComponent<BoxCollider2D>().isTrigger = false;
             }
         }
