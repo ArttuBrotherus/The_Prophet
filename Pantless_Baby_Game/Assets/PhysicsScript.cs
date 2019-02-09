@@ -20,6 +20,16 @@ public class PhysicsScript : MonoBehaviour {
     protected const float minMoveDistance = 0.001f;
     protected const float shellRadius = 0.01f;
 
+    public float maxSpeed = 7;
+    public float jumpTakeOffSpeed = 7;
+
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
+    void Awake() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -35,6 +45,7 @@ public class PhysicsScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         targetVelocity = Vector2.zero;
+        ComputeVelocity();
     }
 
     public virtual void StopIfGoingDown()
@@ -47,7 +58,33 @@ public class PhysicsScript : MonoBehaviour {
         }
     }
 
-    protected virtual void ComputeVelocity() { }
+    protected void ComputeVelocity() {
+        Vector2 move = Vector2.zero;
+
+        move.x = Input.GetAxis( "Horizontal" );
+
+        if ( Input.GetButtonDown( "Jump" ) && grounded ) {
+            velocity.y = jumpTakeOffSpeed;
+        } else if ( Input.GetButtonUp( "Jump" ) ) {
+            if ( velocity.y > 0 ) {
+                velocity.y = velocity.y * 0.5f;
+            }
+        }
+
+        if ( velocity.x > 0.01f ) {
+            spriteRenderer.flipX = false;
+        } else if ( velocity.x < -0.01f ) {
+            spriteRenderer.flipX = true;
+        }
+
+        targetVelocity = move * maxSpeed;
+    }
+
+    private void OnTriggerEnter2D( Collider2D collision ) {
+        if ( collision.CompareTag( "BluePlatform" ) ) {
+            Debug.Log( "Hitting platform" );
+        }
+    }
 
     void FixedUpdate()
     {
