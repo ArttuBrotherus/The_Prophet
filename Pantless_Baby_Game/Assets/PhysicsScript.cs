@@ -48,16 +48,6 @@ public class PhysicsScript : MonoBehaviour {
         ComputeVelocity();
     }
 
-    public virtual void StopIfGoingDown()
-    {
-        Debug.Log(velocity);
-        if (velocity.y < 0) // falling? going down?
-        {
-            velocity = new Vector2(velocity.x, -velocity.y);
-            Debug.Log("----------------RESET---------------------");
-        }
-    }
-
     protected void ComputeVelocity() {
         Vector2 move = Vector2.zero;
 
@@ -80,9 +70,14 @@ public class PhysicsScript : MonoBehaviour {
         targetVelocity = move * maxSpeed;
     }
 
-    private void OnTriggerEnter2D( Collider2D collision ) {
+    private void OnTriggerExit2D( Collider2D collision ) {
         if ( collision.CompareTag( "BluePlatform" ) ) {
-            Debug.Log( "Hitting platform" );
+            Debug.Log( "Exiting platform" );
+            if ( velocity.y > 0 ) { // going upward?
+                // Remove istrigger, making Unity handle the platform collisions 
+                // so platform becomes "solid"
+                collision.GetComponent<BoxCollider2D>().isTrigger = false;
+            }
         }
     }
 
