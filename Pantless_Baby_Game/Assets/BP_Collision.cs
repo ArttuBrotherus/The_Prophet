@@ -17,26 +17,4 @@ public class BP_Collision : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.name == "ilkka")
-        {
-            Debug.Log("Ilkka");
-            var physics = col.GetComponent<PhysicsScript>();
-            physics.StopIfGoingDown();
-        }
-
-        return;
-
-
-        BoxCollider2D parentCollider = gameObject.GetComponentInParent(typeof(BoxCollider2D)) as BoxCollider2D;
-
-        
-        Debug.Log(rb.velocity);
-        if (rb.velocity.y > 0)
-        {
-            parentCollider.enabled = false;
-            Debug.Log("frodi");
-        }
-    }
 }

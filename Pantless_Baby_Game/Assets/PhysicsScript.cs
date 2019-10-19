@@ -37,16 +37,6 @@ public class PhysicsScript : MonoBehaviour {
         targetVelocity = Vector2.zero;
     }
 
-    public virtual void StopIfGoingDown()
-    {
-        Debug.Log(velocity);
-        if (velocity.y < 0) // falling? going down?
-        {
-            velocity = new Vector2(velocity.x, -velocity.y);
-            Debug.Log("----------------RESET---------------------");
-        }
-    }
-
     protected virtual void ComputeVelocity() { }
 
     void FixedUpdate()
