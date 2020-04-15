@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class teeth_wheel_script : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		
+        transform.Rotate(0,0,-360f * Time.deltaTime);
 	}
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("DEATH");
+        var target = col.gameObject;
+        if (target.tag == "Player") {
+            var player = target.GetComponent<Player>();
+            player.Die();
+        }
     }
 }
