@@ -15,6 +15,8 @@ public class CameraFollow : MonoBehaviour {
     Vector3 currentVelocity;
     Vector3 lookAheadPos;
 
+    float remove_following_time = 0;
+
 	// Use this for initialization
 	void Start () {
         lastTargetPosition = target.position;
@@ -46,4 +48,11 @@ public class CameraFollow : MonoBehaviour {
 
         lastTargetPosition = target.position;
 	}
+
+    public void remove_following()
+    {
+        remove_following_time = Time.fixedTime;
+        Debug.Log("remFol");
+        //after 1 second, the camera should focus on the point, the player character has fallen at present.
+    }
 }

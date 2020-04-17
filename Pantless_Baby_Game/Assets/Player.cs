@@ -34,6 +34,7 @@ public class Player : MonoBehaviour {
         this.GetComponent<CharacterController>().enabled = false;
         this.GetComponent<PhysicsScript>().enabled = false;
         transform.Rotate(0,0,180f);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().remove_following();
     }
 
 }
