@@ -43,15 +43,22 @@ public class CharacterController : PhysicsScript {
             }
         }
 
-        if (velocity.x > 0.01f)
+        if (velocity.x != 0)
         {
-            spriteRenderer.flipX = false;
-        }
-        else if (velocity.x < -0.01f)
-        {
-            spriteRenderer.flipX = true;
-        }
+            GetComponent<Animator>().enabled = true;
+            if (velocity.x > 0.01f)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (velocity.x < -0.01f)
+            {
+                spriteRenderer.flipX = true;
+            }
 
+        } else
+        {
+            GetComponent<Animator>().enabled = false;
+        }
         // TODO. We should in following also check that we are currently not touching any platform
         if (goingUp == true && velocity.y < 0)
         {
