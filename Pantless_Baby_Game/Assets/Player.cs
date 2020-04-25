@@ -32,7 +32,6 @@ public class Player : MonoBehaviour {
         dead = true;
         Debug.Log("DEATH");
         this.GetComponent<CharacterController>().enabled = false;
-        this.GetComponent<PhysicsScript>().enabled = false;
         transform.Rotate(0,0,180f);
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().remove_following();
     }

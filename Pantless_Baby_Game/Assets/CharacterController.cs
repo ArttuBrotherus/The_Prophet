@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : PhysicsScript {
+public class CharacterController : MonoBehaviour
+{
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
@@ -20,54 +21,43 @@ public class CharacterController : PhysicsScript {
 
     // Update is called once per frame
     void Update() {
-        ComputeVelocity();
-    }
+        var body = GetComponent<Rigidbody2D>();
 
-    protected override void ComputeVelocity()
-    {
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump")) // && grounded
         {
-            velocity.y = jumpTakeOffSpeed;
+            Debug.Log("Jump!");
+            body.velocity = new Vector2( body.velocity.x, jumpTakeOffSpeed);  
             changePlatformTriggerState(true);
             goingUp = true;
         }
-        else if (Input.GetButtonUp("Jump"))
-        {
-            if (velocity.y > 0)
-            {
-                velocity.y = velocity.y * 0.5f;
-            }
-        }
 
-        if (velocity.x != 0)
+        if (body.velocity.x != 0)
         {
             GetComponent<Animator>().enabled = true;
-            if (velocity.x > 0.01f)
+            if (body.velocity.x > 0.01f)
             {
                 spriteRenderer.flipX = false;
             }
-            else if (velocity.x < -0.01f)
+            else if (body.velocity.x < -0.01f)
             {
                 spriteRenderer.flipX = true;
             }
 
-        } else
+        }
+        else
         {
             GetComponent<Animator>().enabled = false;
         }
         // TODO. We should in following also check that we are currently not touching any platform
-        if (goingUp == true && velocity.y < 0)
+        if (goingUp == true && body.velocity.y < 0)
         {
             changePlatformTriggerState(false);
             goingUp = false;
         }
-
-        targetVelocity = move * maxSpeed;
-
     }
 
     void changePlatformTriggerState (bool triggerState)
