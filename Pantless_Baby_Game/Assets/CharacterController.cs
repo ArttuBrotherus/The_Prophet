@@ -27,7 +27,11 @@ public class CharacterController : MonoBehaviour
 
         move.x = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump")) // && grounded
+        var colliders = new Collider2D[100];
+        var colliderNumber = this.GetComponent<Collider2D>().GetContacts(colliders);
+        var grounded = colliderNumber > 0;
+
+        if (Input.GetButtonDown("Jump") && grounded)
         {
             Debug.Log("Jump!");
             body.velocity = new Vector2( body.velocity.x, jumpTakeOffSpeed);  
