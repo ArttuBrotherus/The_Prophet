@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-    private Game_Master_Spt gm;
+    private GamePoints gm;
     private bool dead = false;
 
     private void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<Game_Master_Spt>();
+        gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GamePoints>();
     }
 
     void Update() {

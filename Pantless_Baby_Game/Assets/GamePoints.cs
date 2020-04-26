@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Game_Master_Spt : MonoBehaviour {
+public class GamePoints : MonoBehaviour {
 
     public int points;
 

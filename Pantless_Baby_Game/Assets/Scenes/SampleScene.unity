@@ -615,6 +615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834361f961edc974b95098ccec5dd4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 0
+  pointsText: {fileID: 531462998}
 --- !u!1001 &334031267
 Prefab:
   m_ObjectHideFlags: 0
@@ -871,6 +873,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf2dbebc60fe6941be7740824262d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 551754004}
+  damping: 1
+  lookAheadFactor: 3
+  lookAheadReturnSpeed: 0.5
+  lookAheadMoveTreshold: 0.1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1025,11 +1032,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4304529687402066, guid: 208e5be291b06cc44958b4a49bdece2f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -0.67
       objectReference: {fileID: 0}
     - target: {fileID: 4304529687402066, guid: 208e5be291b06cc44958b4a49bdece2f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.01
       objectReference: {fileID: 0}
     - target: {fileID: 4304529687402066, guid: 208e5be291b06cc44958b4a49bdece2f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1302,6 +1309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb721905166efa46a9a1a560ebc492e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 7
+  jumpTakeOffSpeed: 7
 --- !u!1001 &636184475
 Prefab:
   m_ObjectHideFlags: 0
