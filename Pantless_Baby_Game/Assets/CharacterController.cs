@@ -23,9 +23,9 @@ public class CharacterController : MonoBehaviour
     void Update() {
         var body = GetComponent<Rigidbody2D>();
 
-        Vector2 move = Vector2.zero;
+        var movement = Input.GetAxis("Horizontal");
 
-        move.x = Input.GetAxis("Horizontal");
+        body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
         var colliders = new Collider2D[100];
         var colliderNumber = this.GetComponent<Collider2D>().GetContacts(colliders);
