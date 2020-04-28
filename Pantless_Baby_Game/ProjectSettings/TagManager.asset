@@ -7,6 +7,8 @@ TagManager:
   - Currency
   - GameMaster
   - BP
+  - Floor
+  - Wall_Surface
   layers:
   - Default
   - TransparentFX

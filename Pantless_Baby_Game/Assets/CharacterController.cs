@@ -12,11 +12,13 @@ public class CharacterController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private Transform position;
 
     // Use this for initialization
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        position = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -29,14 +31,22 @@ public class CharacterController : MonoBehaviour
 
         var colliders = new Collider2D[100];
         var colliderNumber = this.GetComponent<Collider2D>().GetContacts(colliders);
-        var grounded = colliderNumber > 0;
+        var floor_detected = false;
+        for (int collider = 0; collider < colliderNumber; collider++)
+        {
+            if (colliders[collider].CompareTag("Floor"))
+            {
+                floor_detected = true;
+            }
+        }
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && floor_detected)
         {
             Debug.Log("Jump!");
             body.velocity = new Vector2( body.velocity.x, jumpTakeOffSpeed);  
             changePlatformTriggerState(true);
             goingUp = true;
+            floor_detected = false;
         }
 
         if (body.velocity.x != 0)
