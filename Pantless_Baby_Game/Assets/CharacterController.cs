@@ -34,7 +34,7 @@ public class CharacterController : MonoBehaviour
         var floor_detected = false;
         for (int collider = 0; collider < colliderNumber; collider++)
         {
-            if (colliders[collider].CompareTag("Floor"))
+            if (colliders[collider].CompareTag("Floor") || colliders[collider].CompareTag("BP")) 
             {
                 floor_detected = true;
             }
