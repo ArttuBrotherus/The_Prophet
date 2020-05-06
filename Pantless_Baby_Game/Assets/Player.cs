@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
     private GamePoints gm;
     private bool dead = false;
+    float death_time;
 
     private void Start()
     {
@@ -15,6 +17,10 @@ public class Player : MonoBehaviour {
         if (dead)
         {
             transform.Translate(0,7 * Time.deltaTime, 0);
+            if(Time.fixedTime > death_time + 1.5f)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
@@ -33,7 +39,9 @@ public class Player : MonoBehaviour {
         Debug.Log("DEATH");
         this.GetComponent<CharacterController>().enabled = false;
         transform.Rotate(0,0,180f);
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().remove_following();
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
+        death_time = Time.fixedTime;
     }
 
 }
