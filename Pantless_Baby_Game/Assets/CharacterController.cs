@@ -44,7 +44,7 @@ public class CharacterController : MonoBehaviour
         {
             Debug.Log("Jump!");
             body.velocity = new Vector2( body.velocity.x, jumpTakeOffSpeed);  
-            changePlatformTriggerState(true);
+            changePlatformTriggerState(makeBlocking: false);
             goingUp = true;
             floor_detected = false;
         }
@@ -69,18 +69,25 @@ public class CharacterController : MonoBehaviour
         // TODO. We should in following also check that we are currently not touching any platform
         if (goingUp == true && body.velocity.y < 0)
         {
-            changePlatformTriggerState(false);
+            changePlatformTriggerState(makeBlocking: true);
             goingUp = false;
         }
     }
 
-    void changePlatformTriggerState (bool triggerState)
+    void changePlatformTriggerState (bool makeBlocking)
     {
-        Debug.Log("changePlatformTS " + triggerState.ToString());
+        Debug.Log("changePlatformTS " + makeBlocking.ToString());
         GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
         foreach (GameObject platform in bluePlatforms)
         {
-            platform.GetComponent<BoxCollider2D>().isTrigger = triggerState;
+            var touchingPlayer = platform.GetComponent<BoxCollider2D>().IsTouching(GetComponent<Collider2D>());
+            if(makeBlocking){
+                if(!touchingPlayer){
+                    platform.GetComponent<BoxCollider2D>().isTrigger = false;
+				}
+			} else {
+                platform.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
         }
     }
 }
