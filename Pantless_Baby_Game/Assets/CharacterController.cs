@@ -42,7 +42,6 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && floor_detected)
         {
-            Debug.Log("Jump!");
             body.velocity = new Vector2( body.velocity.x, jumpTakeOffSpeed);  
             changePlatformTriggerState(makeBlocking: false);
             goingUp = true;
@@ -76,7 +75,6 @@ public class CharacterController : MonoBehaviour
 
     void changePlatformTriggerState (bool makeBlocking)
     {
-        Debug.Log("changePlatformTS " + makeBlocking.ToString());
         GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
         foreach (GameObject platform in bluePlatforms)
         {
@@ -90,4 +88,14 @@ public class CharacterController : MonoBehaviour
             }
         }
     }
+
+    /*
+    void OnCollisionEnter2D(Collision2D col){
+        Debug.Log("IM-HIT!");
+        if(col.gameObject.tag == "BP"){
+            col.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;  
+		}
+	}
+    */
+
 }
