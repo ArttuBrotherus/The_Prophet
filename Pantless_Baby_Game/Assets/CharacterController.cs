@@ -29,16 +29,9 @@ public class CharacterController : MonoBehaviour
 
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
-        var colliders = new Collider2D[100];
-        var colliderNumber = this.GetComponent<Collider2D>().GetContacts(colliders);
-        var floor_detected = false;
-        for (int collider = 0; collider < colliderNumber; collider++)
-        {
-            if (colliders[collider].CompareTag("Floor") || colliders[collider].CompareTag("BP")) 
-            {
-                floor_detected = true;
-            }
-        }
+        var feet = this.transform.GetChild(0);
+        var floor_detected = isFloorDetected(this.GetComponent<BoxCollider2D>()) ||
+                isFloorDetected(feet.GetComponent<BoxCollider2D>());
 
         if (Input.GetButtonDown("Jump") && floor_detected)
         {
@@ -89,13 +82,18 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    /*
-    void OnCollisionEnter2D(Collision2D col){
-        Debug.Log("IM-HIT!");
-        if(col.gameObject.tag == "BP"){
-            col.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;  
-		}
-	}
-    */
+    bool isFloorDetected(BoxCollider2D GOCollider)
+    {
+        var colliders = new Collider2D[100];
+        var colliderNumber = GOCollider.GetContacts(colliders);
+        for (int collider = 0; collider < colliderNumber; collider++)
+        {
+            if (colliders[collider].CompareTag("Floor") || colliders[collider].CompareTag("BP"))
+            {
+                return true;
+            }
+        }
+        return false;
 
+    }
 }
