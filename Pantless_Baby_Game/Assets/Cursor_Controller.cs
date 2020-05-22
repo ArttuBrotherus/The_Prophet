@@ -31,4 +31,9 @@ public class Cursor_Controller : MonoBehaviour
     {
         Cursor.SetCursor(Passive_cursor, new Vector2(Passive_cursor.width / 2, Passive_cursor.height / 2), CursorMode.Auto);
     }
+
+    public void activate_active_cursor()
+    {
+        Cursor.SetCursor(Target_cursor, new Vector2(Passive_cursor.width / 2, Passive_cursor.height / 2), CursorMode.Auto);
+    }
 }
