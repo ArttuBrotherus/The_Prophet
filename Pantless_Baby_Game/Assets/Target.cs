@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Target : MonoBehaviour
 {
+    public Sprite sprite1;
+    public Sprite sprite2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +20,10 @@ public class Target : MonoBehaviour
         
     }
 
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
-        Cursor_Controller.instance.activate_active_cursor();
-        Debug.Log("Danny G");
+        Debug.Log("OnMouseDown");
+        GetComponent<SpriteRenderer>().sprite = sprite2;
+        Debug.Log("Ready");
     }
 }
