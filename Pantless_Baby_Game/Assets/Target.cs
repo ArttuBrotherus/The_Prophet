@@ -22,8 +22,16 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("OnMouseDown");
         GetComponent<SpriteRenderer>().sprite = sprite2;
-        Debug.Log("Ready");
+    }
+
+    private void OnMouseEnter()
+    {
+        Cursor_Controller.instance.activate_active_cursor();
+    }
+
+    private void OnMouseExit()
+    {
+        Cursor_Controller.instance.activate_passive_cursor();
     }
 }
