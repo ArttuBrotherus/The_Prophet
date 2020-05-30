@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
@@ -14,6 +15,12 @@ public class CharacterController : MonoBehaviour
     private Animator animator;
     private Transform position;
 
+    public GameObject Rope_Particle;
+
+    bool normal_movement = true;
+
+    GameObject[] rope_particles;
+
     // Use this for initialization
     void Awake()
     {
@@ -23,6 +30,62 @@ public class CharacterController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if(normal_movement){
+            NormalMovement();
+        }else{
+            LevitationMovement();
+        }
+    }
+
+    void changePlatformTriggerState (bool makeBlocking)
+    {
+        GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
+        foreach (GameObject platform in bluePlatforms)
+        {
+            var touchingPlayer = platform.GetComponent<BoxCollider2D>().IsTouching(GetComponent<Collider2D>());
+            if(makeBlocking){
+                if(!touchingPlayer){
+                    platform.GetComponent<BoxCollider2D>().isTrigger = false;
+				}
+			} else {
+                platform.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
+        }
+    }
+
+    bool isFloorDetected(BoxCollider2D GOCollider)
+    {
+        var colliders = new Collider2D[100];
+        var colliderNumber = GOCollider.GetContacts(colliders);
+        for (int collider = 0; collider < colliderNumber; collider++)
+        {
+            if (colliders[collider].CompareTag("Floor") || colliders[collider].CompareTag("BP"))
+            {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public void StartRotation(Vector3 position)
+    {
+        Debug.Log(position);
+        rope_particles = new List<GameObject>();
+        foreach(var i in Enumerable.Range(1,10)) {
+            //
+        } 
+        
+        Instantiate(Rope_Particle, position, Quaternion.identity);
+        Instantiate(Rope_Particle, position, Quaternion.identity);
+        normal_movement = false;
+	}
+    
+    void LevitationMovement(){
+        //
+    }
+
+    void NormalMovement(){
         var body = GetComponent<Rigidbody2D>();
 
         var movement = Input.GetAxis("Horizontal");
@@ -66,34 +129,4 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void changePlatformTriggerState (bool makeBlocking)
-    {
-        GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
-        foreach (GameObject platform in bluePlatforms)
-        {
-            var touchingPlayer = platform.GetComponent<BoxCollider2D>().IsTouching(GetComponent<Collider2D>());
-            if(makeBlocking){
-                if(!touchingPlayer){
-                    platform.GetComponent<BoxCollider2D>().isTrigger = false;
-				}
-			} else {
-                platform.GetComponent<BoxCollider2D>().isTrigger = true;
-            }
-        }
-    }
-
-    bool isFloorDetected(BoxCollider2D GOCollider)
-    {
-        var colliders = new Collider2D[100];
-        var colliderNumber = GOCollider.GetContacts(colliders);
-        for (int collider = 0; collider < colliderNumber; collider++)
-        {
-            if (colliders[collider].CompareTag("Floor") || colliders[collider].CompareTag("BP"))
-            {
-                return true;
-            }
-        }
-        return false;
-
-    }
 }
