@@ -21,6 +21,8 @@ public class CharacterController : MonoBehaviour
 
     GameObject[] rope_particles;
 
+    Vector3 pearl_block;
+
     // Use this for initialization
     void Awake()
     {
@@ -70,19 +72,33 @@ public class CharacterController : MonoBehaviour
 
     public void StartRotation(Vector3 position)
     {
-        Debug.Log(position);
-        rope_particles = new List<GameObject>();
-        foreach(var i in Enumerable.Range(1,10)) {
-            //
-        } 
+        // a = ..
+        // a[index] =
         
-        Instantiate(Rope_Particle, position, Quaternion.identity);
-        Instantiate(Rope_Particle, position, Quaternion.identity);
+        // "Classic" for-loop way of initiating 10 rope perticles
+        // rope_particles = new GameObject[10];
+        // for(int particle = 0; particle < rope_particles.Length; particle++){
+        //    rope_particles[particle] = Instantiate(Rope_Particle, position, Quaternion.identity);
+        // }
+
+        // *Better* More modern *functional programming* way of initiating 10 rope particles:
+        // This avoids (a) creation of array with "new", (b) error-prone manual manipulation of index-variable and
+        // (c) modifying the array contents.
+        rope_particles = Enumerable.Range(1,10).Select(_ => Instantiate(Rope_Particle, position, Quaternion.identity)).ToArray();
+
         normal_movement = false;
+
+        pearl_block = new Vector3(position.x + 0.5f, position.y - 0.5f, 1);
 	}
     
     void LevitationMovement(){
-        //
+        for(int particle = 0; particle < rope_particles.Length; particle++){
+            float distance_progress = (particle + 1) / 10.0f;
+            float x = pearl_block.x * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.x;
+            float y = pearl_block.y * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.y;
+            // 2. set the desired position for the rope particle
+            rope_particles[particle].transform.position = new Vector3(x, y, 1);         
+        }        
     }
 
     void NormalMovement(){
