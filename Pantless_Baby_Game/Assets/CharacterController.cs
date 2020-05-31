@@ -99,7 +99,11 @@ public class CharacterController : MonoBehaviour
             float x = pearl_block.x * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.x;
             float y = pearl_block.y * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.y;
             // 2. set the desired position for the rope particle
-            rope_particles[particle].transform.position = new Vector3(x, y, 1);         
+            rope_particles[particle].transform.position = new Vector3(x, y, 1);
+
+            //SEE ALSO: Quaternion and Matrix4x4 classes for rotation
+
+            this.gameObject.transform.RotateAround(pearl_block, Vector3.zero, 10 * Time.deltaTime);
         }        
     }
 
