@@ -23,6 +23,8 @@ public class CharacterController : MonoBehaviour
 
     Vector3 pearl_block;
 
+    int RopeParticleAmount = 20;
+
     // Use this for initialization
     void Awake()
     {
@@ -84,7 +86,7 @@ public class CharacterController : MonoBehaviour
         // *Better* More modern *functional programming* way of initiating 10 rope particles:
         // This avoids (a) creation of array with "new", (b) error-prone manual manipulation of index-variable and
         // (c) modifying the array contents.
-        rope_particles = Enumerable.Range(1,10).Select(_ => Instantiate(Rope_Particle, position, Quaternion.identity)).ToArray();
+        rope_particles = Enumerable.Range(1,RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, position, Quaternion.identity)).ToArray();
 
         normal_movement = false;
 
@@ -93,7 +95,7 @@ public class CharacterController : MonoBehaviour
     
     void LevitationMovement(){
         for(int particle = 0; particle < rope_particles.Length; particle++){
-            float distance_progress = (particle + 1) / 10.0f;
+            float distance_progress = (particle + 1) / Convert.ToSingle(RopeParticleAmount);
             float x = pearl_block.x * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.x;
             float y = pearl_block.y * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.y;
             // 2. set the desired position for the rope particle
