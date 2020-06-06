@@ -21,7 +21,7 @@ public class CharacterController : MonoBehaviour
 
     GameObject[] rope_particles;
 
-    Vector3 pearl_block;
+    Transform pearl_block;
 
     int RopeParticleAmount = 20;
 
@@ -72,6 +72,7 @@ public class CharacterController : MonoBehaviour
 
     }
 
+    /*
     public void StartRotation(Vector3 position)
     {
         // a = ..
@@ -92,19 +93,32 @@ public class CharacterController : MonoBehaviour
 
         pearl_block = new Vector3(position.x + 0.5f, position.y - 0.5f, 1);
 	}
+    */
     
+    public void StartRotation(Transform center_of_target)
+    {
+        normal_movement = false;
+
+        pearl_block = center_of_target;
+
+        this.gameObject.transform.parent = pearl_block;
+        this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+    }
+
     void LevitationMovement(){
-        for(int particle = 0; particle < rope_particles.Length; particle++){
+
+        /*
+        for (int particle = 0; particle < rope_particles.Length; particle++)
+        {
             float distance_progress = (particle + 1) / Convert.ToSingle(RopeParticleAmount);
-            float x = pearl_block.x * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.x;
-            float y = pearl_block.y * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.y;
+            float x = pearl_block.position.x * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.x;
+            float y = pearl_block.position.y * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.y;
             // 2. set the desired position for the rope particle
             rope_particles[particle].transform.position = new Vector3(x, y, 1);
+        }
+        */
 
-            //SEE ALSO: Quaternion and Matrix4x4 classes for rotation
-
-            this.gameObject.transform.RotateAround(pearl_block, Vector3.zero, 10 * Time.deltaTime);
-        }        
+            pearl_block.Rotate(0, 0, -90f * Time.deltaTime);
     }
 
     void NormalMovement(){
