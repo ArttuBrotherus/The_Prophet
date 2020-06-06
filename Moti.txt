@@ -3,6 +3,6 @@
 ==> joka päivä pieni osa
 ==> tulee tunne, että edistyy
 - hyödyllisten taitojen oppiminen pelin-teon kautta
-- mielekkäämmät pelimekaniikat (inspiraatiota Hercule Poirot -tarinoista?)
+- mielekkäämmät pelimekaniikat
 - keskustelua, minkälainen peli olisi
 - aikatauluttamista: luonnostelu, koodaaminen, palaverejä, deadlinejä jms.
