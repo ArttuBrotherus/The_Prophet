@@ -89,11 +89,12 @@ public class CharacterController : MonoBehaviour
         // (c) modifying the array contents.
         rope_particles = Enumerable.Range(1,RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, position, Quaternion.identity)).ToArray();
 
-        normal_movement = false;
-
-        pearl_block = new Vector3(position.x + 0.5f, position.y - 0.5f, 1);
-	}
     */
+
+    public bool IsMovementNormal()
+    {
+        return normal_movement;
+    }
     
     public void StartRotation(Transform center_of_target)
     {
@@ -102,12 +103,17 @@ public class CharacterController : MonoBehaviour
         pearl_block = center_of_target;
 
         this.gameObject.transform.parent = pearl_block;
-        this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+
+        var block_joint = GetComponent<DistanceJoint2D>();
+        block_joint.enabled = true;
+        block_joint.connectedAnchor = center_of_target.position;
+
+        rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
     }
 
     void LevitationMovement(){
 
-        /*
+
         for (int particle = 0; particle < rope_particles.Length; particle++)
         {
             float distance_progress = (particle + 1) / Convert.ToSingle(RopeParticleAmount);
@@ -116,9 +122,9 @@ public class CharacterController : MonoBehaviour
             // 2. set the desired position for the rope particle
             rope_particles[particle].transform.position = new Vector3(x, y, 1);
         }
-        */
 
-            pearl_block.Rotate(0, 0, -90f * Time.deltaTime);
+        pearl_block.Rotate(0, 0, -165f * Time.deltaTime, Space.Self);
+        transform.Rotate(0, 0, 165f * Time.deltaTime);
     }
 
     void NormalMovement(){
@@ -163,6 +169,11 @@ public class CharacterController : MonoBehaviour
             changePlatformTriggerState(makeBlocking: true);
             goingUp = false;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision!");
     }
 
 }

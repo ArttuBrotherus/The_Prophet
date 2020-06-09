@@ -23,7 +23,11 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         GetComponent<SpriteRenderer>().sprite = sprite2;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().StartRotation(this.gameObject.transform.GetChild(0));
+        var player_controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
+        if (player_controller.IsMovementNormal())
+        {
+            player_controller.StartRotation(this.gameObject.transform.GetChild(0));
+        }
     }
 
     private void OnMouseEnter()
