@@ -34,7 +34,7 @@ public class CharacterController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if(normal_movement){
+        if (normal_movement){
             NormalMovement();
         }else{
             LevitationMovement();
@@ -95,6 +95,20 @@ public class CharacterController : MonoBehaviour
     {
         return normal_movement;
     }
+
+    void StopRotation()
+    {
+        normal_movement = true;
+
+        transform.parent = null;
+
+        GetComponent<DistanceJoint2D>().enabled = false;
+
+        foreach(GameObject particle in rope_particles)
+        {
+            Destroy(particle);
+        }
+    }
     
     public void StartRotation(Transform center_of_target)
     {
@@ -102,7 +116,7 @@ public class CharacterController : MonoBehaviour
 
         pearl_block = center_of_target;
 
-        this.gameObject.transform.parent = pearl_block;
+        transform.parent = pearl_block;
 
         var block_joint = GetComponent<DistanceJoint2D>();
         block_joint.enabled = true;
@@ -173,7 +187,10 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision!");
+        if (!normal_movement)
+        {
+            StopRotation();
+        }
     }
 
 }
