@@ -108,6 +108,8 @@ public class CharacterController : MonoBehaviour
         {
             Destroy(particle);
         }
+
+        GetComponent<Rigidbody2D>().gravityScale = 1;
     }
     
     public void StartRotation(Transform center_of_target)
@@ -121,6 +123,8 @@ public class CharacterController : MonoBehaviour
         var block_joint = GetComponent<DistanceJoint2D>();
         block_joint.enabled = true;
         block_joint.connectedAnchor = center_of_target.position;
+
+        GetComponent<Rigidbody2D>().gravityScale = 0;
 
         rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
     }
@@ -137,8 +141,8 @@ public class CharacterController : MonoBehaviour
             rope_particles[particle].transform.position = new Vector3(x, y, 1);
         }
 
-        pearl_block.Rotate(0, 0, -165f * Time.deltaTime, Space.Self);
-        transform.Rotate(0, 0, 165f * Time.deltaTime);
+        pearl_block.Rotate(0, 0, -200f * Time.deltaTime, Space.Self);
+        transform.Rotate(0, 0, 200f * Time.deltaTime);
     }
 
     void NormalMovement(){
