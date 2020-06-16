@@ -25,6 +25,8 @@ public class CharacterController : MonoBehaviour
 
     int RopeParticleAmount = 20;
 
+    float orbiting_number;
+
     // Use this for initialization
     void Awake()
     {
@@ -112,7 +114,7 @@ public class CharacterController : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 1;
     }
     
-    public void StartRotation(Transform center_of_target)
+    public void StartRotation(Transform center_of_target, float orbiting_direction_number)
     {
         normal_movement = false;
 
@@ -127,6 +129,8 @@ public class CharacterController : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = 0;
 
         rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
+
+        orbiting_number = orbiting_direction_number;
     }
 
     void LevitationMovement(){
@@ -141,8 +145,8 @@ public class CharacterController : MonoBehaviour
             rope_particles[particle].transform.position = new Vector3(x, y, 1);
         }
 
-        pearl_block.Rotate(0, 0, -200f * Time.deltaTime, Space.Self);
-        transform.Rotate(0, 0, 200f * Time.deltaTime);
+        pearl_block.Rotate(0, 0, orbiting_number * (-150f) * Time.deltaTime, Space.Self);
+        transform.Rotate(0, 0, orbiting_number * 150f * Time.deltaTime);
     }
 
     void NormalMovement(){
