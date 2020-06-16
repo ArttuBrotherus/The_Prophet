@@ -135,7 +135,6 @@ public class CharacterController : MonoBehaviour
 
     void LevitationMovement(){
 
-
         for (int particle = 0; particle < rope_particles.Length; particle++)
         {
             float distance_progress = (particle + 1) / Convert.ToSingle(RopeParticleAmount);
@@ -145,8 +144,14 @@ public class CharacterController : MonoBehaviour
             rope_particles[particle].transform.position = new Vector3(x, y, 1);
         }
 
-        pearl_block.Rotate(0, 0, orbiting_number * (-150f) * Time.deltaTime, Space.Self);
-        transform.Rotate(0, 0, orbiting_number * 150f * Time.deltaTime);
+        pearl_block.Rotate(0, 0, orbiting_number * (-100f) * Time.deltaTime, Space.Self);
+        transform.Rotate(0, 0, orbiting_number * 100f * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            StopRotation();
+            Jumping(GetComponent<Rigidbody2D>());
+        }
     }
 
     void NormalMovement(){
@@ -162,7 +167,7 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && floor_detected)
         {
-            body.velocity = new Vector2( body.velocity.x, jumpTakeOffSpeed);  
+            Jumping(body);
             changePlatformTriggerState(makeBlocking: false);
             goingUp = true;
             floor_detected = false;
@@ -199,6 +204,11 @@ public class CharacterController : MonoBehaviour
         {
             StopRotation();
         }
+    }
+
+    void Jumping(Rigidbody2D body)
+    {
+        body.velocity = new Vector2(body.velocity.x, jumpTakeOffSpeed);
     }
 
 }
