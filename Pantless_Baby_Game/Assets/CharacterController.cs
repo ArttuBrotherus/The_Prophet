@@ -48,18 +48,19 @@ public class CharacterController : MonoBehaviour
         GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
         foreach (GameObject platform in bluePlatforms)
         {
-            var touchingPlayer = platform.GetComponent<BoxCollider2D>().IsTouching(GetComponent<Collider2D>());
+            var platformCollider = platform.GetComponent<BoxCollider2D>(); 
+            var touchingPlayer = platformCollider.IsTouching(GetComponent<Collider2D>());
             if(makeBlocking){
                 if(!touchingPlayer){
-                    platform.GetComponent<BoxCollider2D>().isTrigger = false;
+                    platformCollider.isTrigger = false;
 				}
 			} else {
-                platform.GetComponent<BoxCollider2D>().isTrigger = true;
+                platformCollider.isTrigger = true;
             }
         }
     }
 
-    bool isFloorDetected(BoxCollider2D GOCollider)
+    bool isFloorDetected(Collider2D GOCollider)
     {
         var colliders = new Collider2D[100];
         var colliderNumber = GOCollider.GetContacts(colliders);
@@ -162,8 +163,8 @@ public class CharacterController : MonoBehaviour
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
         var feet = this.transform.GetChild(0);
-        var floor_detected = isFloorDetected(this.GetComponent<BoxCollider2D>()) ||
-                isFloorDetected(feet.GetComponent<BoxCollider2D>());
+        var floor_detected = isFloorDetected(this.GetComponent<CapsuleCollider2D>()) ||
+                isFloorDetected(feet.GetComponent<CapsuleCollider2D>());
 
         if (Input.GetButtonDown("Jump") && floor_detected)
         {
