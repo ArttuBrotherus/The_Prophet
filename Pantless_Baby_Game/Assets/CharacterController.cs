@@ -48,7 +48,7 @@ public class CharacterController : MonoBehaviour
         GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
         foreach (GameObject platform in bluePlatforms)
         {
-            var platformCollider = platform.GetComponent<BoxCollider2D>(); 
+            var platformCollider = platform.GetComponent<Collider2D>(); 
             var touchingPlayer = platformCollider.IsTouching(GetComponent<Collider2D>());
             if(makeBlocking){
                 if(!touchingPlayer){
