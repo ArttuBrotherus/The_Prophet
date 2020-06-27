@@ -163,8 +163,9 @@ public class CharacterController : MonoBehaviour
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
         var feet = this.transform.GetChild(0);
-        var floor_detected = isFloorDetected(this.GetComponent<CapsuleCollider2D>()) ||
-                isFloorDetected(feet.GetComponent<CapsuleCollider2D>());
+        var floor_detected = isFloorDetected(GetComponent<BoxCollider2D>());
+        
+       //isFloorDetected(feet.GetComponent<CapsuleCollider2D>());
 
         if (Input.GetButtonDown("Jump") && floor_detected)
         {
