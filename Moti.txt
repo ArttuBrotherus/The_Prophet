@@ -6,3 +6,4 @@
 - mielekkäämmät pelimekaniikat
 - keskustelua, minkälainen peli olisi
 - aikatauluttamista: luonnostelu, koodaaminen, palaverejä, deadlinejä jms.
+- Elliltä: pari tuntia hommaa ennen lounasta, iltapäivällä toinen työrupeama, ei stressiä hommista illalla
