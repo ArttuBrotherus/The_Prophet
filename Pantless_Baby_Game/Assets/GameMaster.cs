@@ -7,4 +7,8 @@ public class GameMaster : MonoBehaviour {
 		Destroy (player.gameObject);
 	}
 
+    private void Start()
+    {
+        //
+    }
 }

@@ -25,8 +25,11 @@ public class Player : MonoBehaviour {
 
     private void Start()
     {
+        
         gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GamePoints>();
 
+        /*
+        
         GameObject[] allBlocs = null;
         foreach(var block in allBlocs)
         {
@@ -61,6 +64,8 @@ public class Player : MonoBehaviour {
 
             }
         }
+
+    */
 
     }
 

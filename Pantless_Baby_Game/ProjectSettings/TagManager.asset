@@ -9,6 +9,10 @@ TagManager:
   - BP
   - Floor
   - Wall_Surface
+  - S_Edge_Right
+  - S_Edge_L
+  - B_Edge_Right
+  - B_Edge_Left
   layers:
   - Default
   - TransparentFX
