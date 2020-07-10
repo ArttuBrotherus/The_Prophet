@@ -1035,6 +1035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 289559360}
   - component: {fileID: 289559361}
+  - component: {fileID: 289559362}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -1070,6 +1071,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 0
   pointsText: {fileID: 531462998}
+--- !u!114 &289559362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289559359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0403ac416228014b9839e57ce9fd09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: {fileID: 1180126589644142, guid: 858da41a9ec4d7049b6609b952b61beb, type: 3}
+  wall: {fileID: 5526341042525272464, guid: 26d5992dc7665c34c9535b55ad321ecc, type: 3}
 --- !u!1 &322022820
 GameObject:
   m_ObjectHideFlags: 0
