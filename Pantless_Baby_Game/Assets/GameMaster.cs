@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Collections.Generic;
 
 public class GameMaster : MonoBehaviour {
 
@@ -7,7 +9,9 @@ public class GameMaster : MonoBehaviour {
     public GameObject floor;
     public GameObject wall;
 
-	public static void KillPlayer (Player player) {
+    Dictionary<Transform, GameObject> Physical_Materials = new Dictionary<Transform, GameObject>();
+
+    public static void KillPlayer (Player player) {
 		Destroy (player.gameObject);
 	}
 
@@ -27,11 +31,7 @@ public class GameMaster : MonoBehaviour {
 
     void GoThroughBlocks(GameObject edge_l)
     {
-        var floorChild = Instantiate(floor);
-        var wallChild = Instantiate(wall);
-        floorChild.transform.parent = edge_l.transform;
-        wallChild.transform.parent = edge_l.transform;
-
-        //floorChild.transform. = 0.95f;
+        Physical_Materials.Add(edge_l.transform, Instantiate(floor, edge_l.transform.position, Quaternion.identity));
+        Physical_Materials.Add(edge_l.transform, Instantiate(wall, edge_l.transform.position, Quaternion.identity));
     }
 }
