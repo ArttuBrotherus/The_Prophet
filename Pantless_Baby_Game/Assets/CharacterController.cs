@@ -62,11 +62,13 @@ public class CharacterController : MonoBehaviour
 
     bool isFloorDetected(Collider2D GOCollider)
     {
-        var colliders = new Collider2D[100];
-        var colliderNumber = GOCollider.GetContacts(colliders);
-        for (int collider = 0; collider < colliderNumber; collider++)
+        var contactPoints = new ContactPoint2D[100];
+        var colliderNumber = GOCollider.GetContacts(contactPoints);
+        for (int n = 0; n < colliderNumber; n++)
         {
-            if (colliders[collider].CompareTag("Floor") || colliders[collider].CompareTag("BP"))
+            var contactPoint = contactPoints[n];
+            var collider = contactPoint.collider; 
+            if (collider.CompareTag("Floor") || collider.CompareTag("BP"))
             {
                 return true;
             }
