@@ -67,8 +67,13 @@ public class CharacterController : MonoBehaviour
         for (int n = 0; n < colliderNumber; n++)
         {
             var contactPoint = contactPoints[n];
-            var collider = contactPoint.collider; 
-            if (collider.CompareTag("Floor") || collider.CompareTag("BP"))
+            var playerCollider = contactPoint.otherCollider;
+            var blockCollider = contactPoint.collider;
+
+            // y kasvaa ylöspäin
+            var touchAtFeet = contactPoint.point.y < position.position.y - 0.45;
+            // TODO: katso onko osuma colliderin "alaosassa"
+            if (touchAtFeet)
             {
                 return true;
             }
@@ -164,7 +169,6 @@ public class CharacterController : MonoBehaviour
 
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
-        var feet = this.transform.GetChild(0);
         var floor_detected = isFloorDetected(GetComponent<BoxCollider2D>());
         
        //isFloorDetected(feet.GetComponent<CapsuleCollider2D>());
