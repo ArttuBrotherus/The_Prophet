@@ -2086,6 +2086,7 @@ GameObject:
   - component: {fileID: 551754009}
   - component: {fileID: 551754006}
   - component: {fileID: 551754003}
+  - component: {fileID: 551754011}
   - component: {fileID: 551754007}
   m_Layer: 0
   m_Name: Player_Character
@@ -2159,22 +2160,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &551754007
-CircleCollider2D:
+--- !u!114 &551754007
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551754002}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585ffed29a69cd4a895fade144b6fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radiusX: 1
+  radiusY: 2
+  smoothness: 30
+  rotation: 0
 --- !u!50 &551754008
 Rigidbody2D:
   serializedVersion: 4
@@ -2262,6 +2263,53 @@ MonoBehaviour:
   jumpTakeOffSpeed: 7
   Rope_Particle: {fileID: 2504765569511403065, guid: 18e47b2972be8fc45bbd32bcfb50c59f,
     type: 3}
+--- !u!68 &551754011
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551754002}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.13, y: -6.66}
+  - {x: 0.10814762, y: -7.0758233}
+  - {x: 0.043545425, y: -7.473473}
+  - {x: -0.060983002, y: -7.8355703}
+  - {x: -0.20086944, y: -8.14629}
+  - {x: -0.37000003, y: -8.392051}
+  - {x: -0.56098306, y: -8.562113}
+  - {x: -0.7654716, y: -8.649044}
+  - {x: -0.9745285, y: -8.649044}
+  - {x: -1.179017, y: -8.562113}
+  - {x: -1.3700001, y: -8.392051}
+  - {x: -1.5391307, y: -8.14629}
+  - {x: -1.6790171, y: -7.8355703}
+  - {x: -1.7835455, y: -7.473473}
+  - {x: -1.8481476, y: -7.075823}
+  - {x: -1.87, y: -6.66}
+  - {x: -1.8481476, y: -6.2441764}
+  - {x: -1.7835455, y: -5.8465266}
+  - {x: -1.6790171, y: -5.4844294}
+  - {x: -1.5391307, y: -5.1737103}
+  - {x: -1.3699999, y: -4.927949}
+  - {x: -1.1790171, y: -4.757887}
+  - {x: -0.9745283, y: -4.670956}
+  - {x: -0.76547164, y: -4.670956}
+  - {x: -0.5609829, y: -4.757887}
+  - {x: -0.3700001, y: -4.927949}
+  - {x: -0.20086926, y: -5.1737103}
+  - {x: -0.06098306, y: -5.4844294}
+  - {x: 0.043545544, y: -5.846527}
+  - {x: 0.10814756, y: -6.2441764}
+  - {x: 0.13, y: -6.6600003}
 --- !u!1001 &558626749
 PrefabInstance:
   m_ObjectHideFlags: 0
