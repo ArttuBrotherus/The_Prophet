@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
         Debug.Log("DEATH");
         this.GetComponent<CharacterController>().enabled = false;
         transform.Rotate(0,0,180f);
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.GetComponent<Collider2D>().enabled = false;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
         death_time = Time.fixedTime;
     }

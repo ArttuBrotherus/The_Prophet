@@ -72,7 +72,6 @@ public class CharacterController : MonoBehaviour
 
             // y kasvaa ylöspäin
             var touchAtFeet = contactPoint.point.y < position.position.y - 0.45;
-            // TODO: katso onko osuma colliderin "alaosassa"
             if (touchAtFeet)
             {
                 return true;
@@ -169,7 +168,7 @@ public class CharacterController : MonoBehaviour
 
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
-        var floor_detected = isFloorDetected(GetComponent<BoxCollider2D>());
+        var floor_detected = isFloorDetected(GetComponent<PolygonCollider2D>());
         
        //isFloorDetected(feet.GetComponent<CapsuleCollider2D>());
 
