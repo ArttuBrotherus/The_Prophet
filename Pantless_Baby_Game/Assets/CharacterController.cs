@@ -27,6 +27,8 @@ public class CharacterController : MonoBehaviour
 
     float orbiting_number;
 
+    bool onGround = false;
+
     // Use this for initialization
     void Awake()
     {
@@ -168,9 +170,9 @@ public class CharacterController : MonoBehaviour
 
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
-        var floor_detected = isFloorDetected(GetComponent<PolygonCollider2D>());
-        
-       //isFloorDetected(feet.GetComponent<CapsuleCollider2D>());
+        //var floor_detected = isFloorDetected(GetComponent<PolygonCollider2D>());
+
+        var floor_detected = onGround;
 
         if (Input.GetButtonDown("Jump") && floor_detected)
         {
@@ -207,10 +209,26 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("OnCollisionEnter, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
         if (!normal_movement)
         {
             StopRotation();
         }
+        if (collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet")
+        {
+            return;
+        }
+        onGround = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
+        if(collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet")
+        {
+            return;
+        }
+        onGround = false;
     }
 
     void Jumping(Rigidbody2D body)
