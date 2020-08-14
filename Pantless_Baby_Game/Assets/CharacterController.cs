@@ -9,15 +9,15 @@ public class CharacterController : MonoBehaviour
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
-    bool goingUp = false;
+    public bool goingUp = false;
+    public bool normal_movement = true;
+    public bool onGround = false;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Transform position;
 
     public GameObject Rope_Particle;
-
-    bool normal_movement = true;
 
     GameObject[] rope_particles;
 
@@ -26,8 +26,6 @@ public class CharacterController : MonoBehaviour
     int RopeParticleAmount = 20;
 
     float orbiting_number;
-
-    bool onGround = false;
 
     // Use this for initialization
     void Awake()
@@ -47,6 +45,10 @@ public class CharacterController : MonoBehaviour
 
     void changePlatformTriggerState (bool makeBlocking)
     {
+        makeBlocking = true;
+
+
+        Debug.Log("Blue-platform blocking: " + makeBlocking);
         GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
         foreach (GameObject platform in bluePlatforms)
         {
@@ -60,27 +62,6 @@ public class CharacterController : MonoBehaviour
                 platformCollider.isTrigger = true;
             }
         }
-    }
-
-    bool isFloorDetected(Collider2D GOCollider)
-    {
-        var contactPoints = new ContactPoint2D[100];
-        var colliderNumber = GOCollider.GetContacts(contactPoints);
-        for (int n = 0; n < colliderNumber; n++)
-        {
-            var contactPoint = contactPoints[n];
-            var playerCollider = contactPoint.otherCollider;
-            var blockCollider = contactPoint.collider;
-
-            // y kasvaa ylöspäin
-            var touchAtFeet = contactPoint.point.y < position.position.y - 0.45;
-            if (touchAtFeet)
-            {
-                return true;
-            }
-        }
-        return false;
-
     }
 
     /*
@@ -170,16 +151,10 @@ public class CharacterController : MonoBehaviour
 
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
-        //var floor_detected = isFloorDetected(GetComponent<PolygonCollider2D>());
-
-        var floor_detected = onGround;
-
-        if (Input.GetButtonDown("Jump") && floor_detected)
+        if (Input.GetButtonDown("Jump") && onGround)
         {
             Jumping(body);
-            changePlatformTriggerState(makeBlocking: false);
             goingUp = true;
-            floor_detected = false;
         }
 
         if (body.velocity.x != 0)
@@ -229,6 +204,10 @@ public class CharacterController : MonoBehaviour
             return;
         }
         onGround = false;
+        if (goingUp)
+        {
+            changePlatformTriggerState(makeBlocking: false);
+        }
     }
 
     void Jumping(Rigidbody2D body)
