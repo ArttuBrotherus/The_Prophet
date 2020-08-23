@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 511387658}
   - component: {fileID: 511387657}
   - component: {fileID: 511387656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tilemap_Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ Tilemap:
   m_GameObject: {fileID: 511387653}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 4, y: -16, z: 0}
+  - first: {x: 9, y: -17, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -550,7 +550,7 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: 5, y: -16, z: 0}
+  - first: {x: 4, y: -15, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -559,7 +559,7 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: 6, y: -16, z: 0}
+  - first: {x: 5, y: -15, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -568,7 +568,16 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: 7, y: -16, z: 0}
+  - first: {x: 6, y: -15, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: 7, y: -15, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -579,13 +588,13 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 0d8bf6ce5690fd545b8a3ee262790a20, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 870c0228225a31b479358c23bdf126bc, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data:
       e00: 1
       e01: 0
@@ -604,13 +613,13 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: -16, z: 0}
-  m_Size: {x: 8, y: 16, z: 1}
+  m_Origin: {x: 0, y: -17, z: 0}
+  m_Size: {x: 10, y: 17, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -641,7 +650,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -669,28 +678,48 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 511387660}
     m_ColliderPaths:
-    - - X: 39999900
-        Y: -149999959
+    - - X: 80000100
+        Y: -142812537
+      - X: 80000100
+        Y: -139999959
+      - X: 80000041
+        Y: -139999900
+      - X: 39999959
+        Y: -139999900
       - X: 39999900
-        Y: -152812537
+        Y: -139999959
+      - X: 39999900
+        Y: -142812537
       - X: 39999959
-        Y: -152812596
+        Y: -142812596
       - X: 80000041
-        Y: -152812596
-      - X: 80000100
-        Y: -152812537
-      - X: 80000100
-        Y: -149999959
-      - X: 80000041
-        Y: -149999900
-      - X: 39999959
-        Y: -149999900
+        Y: -142812596
+    - - X: 100000100
+        Y: -162812537
+      - X: 100000100
+        Y: -159999959
+      - X: 100000041
+        Y: -159999900
+      - X: 89999959
+        Y: -159999900
+      - X: 89999900
+        Y: -159999959
+      - X: 89999900
+        Y: -162812537
+      - X: 89999959
+        Y: -162812596
+      - X: 100000041
+        Y: -162812596
   m_CompositePaths:
     m_Paths:
-    - - {x: 7.9999747, y: -15.28126}
-      - {x: 7.9999747, y: -14.99999}
-      - {x: 3.99999, y: -15.000026}
-      - {x: 4.0000253, y: -15.28126}
+    - - {x: 7.9999747, y: -14.28126}
+      - {x: 7.9999747, y: -13.99999}
+      - {x: 3.99999, y: -14.000026}
+      - {x: 4.0000253, y: -14.28126}
+    - - {x: 9.999974, y: -16.28126}
+      - {x: 9.999974, y: -15.99999}
+      - {x: 8.99999, y: -16.000027}
+      - {x: 9.000026, y: -16.28126}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &511387658
@@ -1163,8 +1192,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.3}
-  m_Size: {x: 1, y: 0.4}
+  m_Offset: {x: 0, y: -2}
+  m_Size: {x: 0.8, y: 1}
   m_Direction: 1
 --- !u!1 &1228016895
 GameObject:
@@ -6698,7 +6727,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 7
   jumpTakeOffSpeed: 7
-  goingUp: 0
   normal_movement: 1
   onGround: 0
   Rope_Particle: {fileID: 2504765569511403065, guid: 18e47b2972be8fc45bbd32bcfb50c59f,

@@ -9,7 +9,6 @@ public class CharacterController : MonoBehaviour
 
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
-    public bool goingUp = false;
     public bool normal_movement = true;
     public bool onGround = false;
 
@@ -40,27 +39,6 @@ public class CharacterController : MonoBehaviour
             NormalMovement();
         }else{
             LevitationMovement();
-        }
-    }
-
-    void changePlatformTriggerState (bool makeBlocking)
-    {
-        makeBlocking = true;
-
-
-        Debug.Log("Blue-platform blocking: " + makeBlocking);
-        GameObject[] bluePlatforms = GameObject.FindGameObjectsWithTag("BP");
-        foreach (GameObject platform in bluePlatforms)
-        {
-            var platformCollider = platform.GetComponent<Collider2D>(); 
-            var touchingPlayer = platformCollider.IsTouching(GetComponent<Collider2D>());
-            if(makeBlocking){
-                if(!touchingPlayer){
-                    platformCollider.isTrigger = false;
-				}
-			} else {
-                platformCollider.isTrigger = true;
-            }
         }
     }
 
@@ -154,7 +132,6 @@ public class CharacterController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && onGround)
         {
             Jumping(body);
-            goingUp = true;
         }
 
         if (body.velocity.x != 0)
@@ -173,12 +150,6 @@ public class CharacterController : MonoBehaviour
         else
         {
             GetComponent<Animator>().enabled = false;
-        }
-        // TODO. We should in following also check that we are currently not touching any platform
-        if (goingUp == true && body.velocity.y < 0)
-        {
-            changePlatformTriggerState(makeBlocking: true);
-            goingUp = false;
         }
     }
 
@@ -204,10 +175,6 @@ public class CharacterController : MonoBehaviour
             return;
         }
         onGround = false;
-        if (goingUp)
-        {
-            changePlatformTriggerState(makeBlocking: false);
-        }
     }
 
     void Jumping(Rigidbody2D body)
