@@ -155,7 +155,7 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("OnCollisionEnter, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
+        //Debug.Log("OnCollisionEnter, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
         if (!normal_movement)
         {
             StopRotation();
@@ -169,7 +169,7 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
+        //Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
         if(collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet")
         {
             return;
