@@ -131,6 +131,7 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && onGround)
         {
+            //transform.position = new Vector3(- 2, - 13);
             Jumping(body);
         }
 
