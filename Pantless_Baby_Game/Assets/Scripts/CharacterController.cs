@@ -26,6 +26,8 @@ public class CharacterController : MonoBehaviour
 
     float orbiting_number;
 
+    bool touchingBP = false;
+
     // Use this for initialization
     void Awake()
     {
@@ -131,9 +133,19 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && onGround)
         {
-            //transform.position = new Vector3(- 2, - 13);
+            //transform.position = new Vector3(- 2, - 13);           
+            if (touchingBP)
+            {
+                if(Input.GetAxis("Vertical") < 0)
+                {
+                    //
+                    return;
+                }
+            }
             Jumping(body);
         }
+
+        //var movement = Input.GetAxis("Horizontal");
 
         if (body.velocity.x != 0)
         {
@@ -166,6 +178,10 @@ public class CharacterController : MonoBehaviour
             return;
         }
         onGround = true;
+        if (collision.gameObject.CompareTag("BP"))
+        {
+            touchingBP = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

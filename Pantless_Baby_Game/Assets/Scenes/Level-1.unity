@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 511387661}
   m_Layer: 9
   m_Name: Tilemap_Platform
-  m_TagString: Untagged
+  m_TagString: BP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 511387653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c66b1d11ed5193344883e661aae00993, type: 3}
+  m_Script: {fileID: 11500000, guid: 30cc816eb12c52a48aaa0275fa1cd007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &653163299
