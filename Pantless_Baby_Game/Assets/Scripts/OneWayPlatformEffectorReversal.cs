@@ -15,4 +15,9 @@ public class OneWayPlatformEffectorReversal : MonoBehaviour
     {
         
     }
+
+    public void EffectorReversal()
+    {
+        //
+    }
 }

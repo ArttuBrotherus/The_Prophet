@@ -138,7 +138,9 @@ public class CharacterController : MonoBehaviour
             {
                 if(Input.GetAxis("Vertical") < 0)
                 {
-                    //
+                    var BP = GameObject.FindGameObjectsWithTag("BP");
+                    Debug.Log("Going down");
+                    //BP.EffectorReversal();
                     return;
                 }
             }
