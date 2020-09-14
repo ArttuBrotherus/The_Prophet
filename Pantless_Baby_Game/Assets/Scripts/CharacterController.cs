@@ -136,11 +136,11 @@ public class CharacterController : MonoBehaviour
             //transform.position = new Vector3(- 2, - 13);           
             if (touchingBP)
             {
-                if(Input.GetAxis("Vertical") < 0)
+                if(Input.GetKey(KeyCode.S))
                 {
-                    var BP = GameObject.FindGameObjectsWithTag("BP");
-                    Debug.Log("Going down");
-                    //BP.EffectorReversal();
+                    // Getting the script of BP, executing its public function
+                    var effector = GameObject.FindGameObjectWithTag("BP").GetComponent<OneWayPlatformEffectorReversal>();
+                    effector.EffectorReversal();
                     return;
                 }
             }
