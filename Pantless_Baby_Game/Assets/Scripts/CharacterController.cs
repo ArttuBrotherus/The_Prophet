@@ -88,19 +88,15 @@ public class CharacterController : MonoBehaviour
     {
         normal_movement = false;
 
-        pearl_block = center_of_target;
-
-        transform.parent = pearl_block;
-
-        var block_joint = GetComponent<DistanceJoint2D>();
-        block_joint.enabled = true;
-        block_joint.connectedAnchor = center_of_target.position;
+        pearl_block.position = center_of_target.position;
 
         GetComponent<Rigidbody2D>().gravityScale = 0;
 
-        rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
+        rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, pearl_block.position, Quaternion.identity)).ToArray();
 
         orbiting_number = orbiting_direction_number;
+
+        //
     }
 
     void LevitationMovement(){
@@ -114,6 +110,7 @@ public class CharacterController : MonoBehaviour
             rope_particles[particle].transform.position = new Vector3(x, y, 1);
         }
 
+        //orbiting_number = 1 when orbiting clockwise (when rotating pearl block)
         pearl_block.Rotate(0, 0, orbiting_number * (-100f) * Time.deltaTime, Space.Self);
         transform.Rotate(0, 0, orbiting_number * 100f * Time.deltaTime);
 
@@ -138,6 +135,8 @@ public class CharacterController : MonoBehaviour
             {
                 if(Input.GetKey(KeyCode.S))
                 {
+                    //If we're on top of a platform, press S and the jump button, we'll fall through the platform
+
                     // Getting the script of BP, executing its public function
                     var effector = GameObject.FindGameObjectWithTag("BP").GetComponent<OneWayPlatformEffectorReversal>();
                     effector.EffectorReversal();
