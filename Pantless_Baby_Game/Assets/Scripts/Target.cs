@@ -42,6 +42,8 @@ public class Target : MonoBehaviour
             //If left m. button pressed, value is -1, otherwise 1. -1 means orbiting takes
             //place counter-clockwise, 1 means clockwise
 
+            Debug.Assert(this.gameObject.transform.GetChild(0) != null, "transform has child");
+
             player_controller.StartRotation(this.gameObject.transform.GetChild(0), orbiting_number);
         }
     }

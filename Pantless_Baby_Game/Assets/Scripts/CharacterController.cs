@@ -21,12 +21,14 @@ public class CharacterController : MonoBehaviour
     GameObject[] rope_particles;
 
     Transform pearl_block;
-
+    float blockAngle;
     int RopeParticleAmount = 20;
+    float blockDistance;
 
     float orbiting_number;
 
     bool touchingBP = false;
+
 
     // Use this for initialization
     void Awake()
@@ -86,20 +88,36 @@ public class CharacterController : MonoBehaviour
     
     public void StartRotation(Transform center_of_target, float orbiting_direction_number)
     {
+
         normal_movement = false;
 
-        pearl_block.position = center_of_target.position;
+        Debug.Assert(center_of_target != null, "Center of target is null");
+
+        pearl_block = center_of_target;
 
         GetComponent<Rigidbody2D>().gravityScale = 0;
 
-        rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, pearl_block.position, Quaternion.identity)).ToArray();
+        rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
 
         orbiting_number = orbiting_direction_number;
 
-        //
+        var deltaX = transform.position.x - pearl_block.position.x;
+        var deltaY = transform.position.y - pearl_block.position.y;
+
+        blockAngle = Mathf.Atan2(deltaX, deltaY);
+
+        blockDistance = Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
     void LevitationMovement(){
+
+        blockAngle += Time.deltaTime * 2 * orbiting_number;
+
+        float ukkoX = Mathf.Cos(blockAngle) * blockDistance + pearl_block.position.x;
+        float ukkoY = Mathf.Sin(blockAngle) * blockDistance + pearl_block.position.y;
+
+        //Set the character's next position:
+        this.gameObject.transform.position = new Vector3(ukkoX, ukkoY);
 
         for (int particle = 0; particle < rope_particles.Length; particle++)
         {
@@ -111,7 +129,6 @@ public class CharacterController : MonoBehaviour
         }
 
         //orbiting_number = 1 when orbiting clockwise (when rotating pearl block)
-        pearl_block.Rotate(0, 0, orbiting_number * (-100f) * Time.deltaTime, Space.Self);
         transform.Rotate(0, 0, orbiting_number * 100f * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump"))
