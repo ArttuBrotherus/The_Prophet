@@ -67,16 +67,21 @@ public class CharacterController : MonoBehaviour
 
     public bool IsMovementNormal()
     {
-        return normal_movement;
+        //We also check whether the player is in mid-air. This is to avoid forcing
+        //the player character inside a collider.
+        if(normal_movement && !onGround)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     void StopRotation()
     {
         normal_movement = true;
-
-        transform.parent = null;
-
-        GetComponent<DistanceJoint2D>().enabled = false;
 
         foreach(GameObject particle in rope_particles)
         {
@@ -85,7 +90,7 @@ public class CharacterController : MonoBehaviour
 
         GetComponent<Rigidbody2D>().gravityScale = 1;
     }
-    
+
     public void StartRotation(Transform center_of_target, float orbiting_direction_number)
     {
 
@@ -106,11 +111,15 @@ public class CharacterController : MonoBehaviour
 
         blockAngle = Mathf.Atan2(deltaX, deltaY);
 
+        //Debug.Log("deltaX: " + deltaX + ", deltaY: " + deltaY + ", blockAngle: " + Mathf.Rad2Deg * blockAngle);
+
         blockDistance = Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
     void LevitationMovement(){
 
+        //Orbiting should be clockwise if orbiting_number is 1, how come this, possibly,
+        //isn't the case?
         blockAngle += Time.deltaTime * 2 * orbiting_number;
 
         float ukkoX = Mathf.Cos(blockAngle) * blockDistance + pearl_block.position.x;
@@ -129,7 +138,7 @@ public class CharacterController : MonoBehaviour
         }
 
         //orbiting_number = 1 when orbiting clockwise (when rotating pearl block)
-        transform.Rotate(0, 0, orbiting_number * 100f * Time.deltaTime);
+        //transform.Rotate(0, 0, orbiting_number * 100f * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump"))
         {

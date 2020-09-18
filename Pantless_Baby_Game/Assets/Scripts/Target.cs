@@ -36,11 +36,16 @@ public class Target : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = sprite2;
         var player_controller = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
+
+        //IsMovementNormal: Also checks whether the player is onGround
+        //If not, the lines inside the if-statement aren't executed
+
         if (player_controller.IsMovementNormal())
         {
 
             //If left m. button pressed, value is -1, otherwise 1. -1 means orbiting takes
             //place counter-clockwise, 1 means clockwise
+            //(At least this is how it should be?)
 
             Debug.Assert(this.gameObject.transform.GetChild(0) != null, "transform has child");
 
