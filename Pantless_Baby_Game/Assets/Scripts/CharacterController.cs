@@ -109,11 +109,32 @@ public class CharacterController : MonoBehaviour
         var deltaX = transform.position.x - pearl_block.position.x;
         var deltaY = transform.position.y - pearl_block.position.y;
 
-        blockAngle = Mathf.Atan2(deltaX, deltaY);
+        blockAngle = correctBlockAngle(deltaX, deltaY);
 
         //Debug.Log("deltaX: " + deltaX + ", deltaY: " + deltaY + ", blockAngle: " + Mathf.Rad2Deg * blockAngle);
 
         blockDistance = Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+
+    float correctBlockAngle(float deltaX, float deltaY)
+    {
+        var quandrantAngle = Mathf.Atan2(Mathf.Abs(deltaY), Mathf.Abs(deltaX));
+        if (deltaX > 0 && deltaY > 0) // oik ylä
+        {
+            return quandrantAngle;
+        }
+        else if (deltaX > 0 && deltaY < 0) // oik ala
+        {
+            return -quandrantAngle + Mathf.PI * 2.0f;
+        }
+        else if (deltaX < 0 && deltaY < 0) // vase ala
+        {
+            return quandrantAngle + Mathf.PI * 1.0f;
+        }
+        else // vasen ylä
+        {
+            return -quandrantAngle + Mathf.PI * 1.0f;
+        }
     }
 
     void LevitationMovement(){
