@@ -10,7 +10,7 @@ public class CharacterController : MonoBehaviour
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     public bool normal_movement = true;
-    public bool onGround = false;
+    public int groundedCount = 0;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -69,7 +69,7 @@ public class CharacterController : MonoBehaviour
     {
         //We also check whether the player is in mid-air. This is to avoid forcing
         //the player character inside a collider.
-        if(normal_movement && !onGround)
+        if(normal_movement && groundedCount == 0) // !grounded     grounded: groundedCOunt > 0
         {
             return true;
         }
@@ -175,7 +175,7 @@ public class CharacterController : MonoBehaviour
 
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && onGround)
+        if (Input.GetButtonDown("Jump") && groundedCount > 0)
         {
             //transform.position = new Vector3(- 2, - 13);           
             if (touchingBP)
@@ -225,7 +225,8 @@ public class CharacterController : MonoBehaviour
         {
             return;
         }
-        onGround = true;
+        groundedCount++;
+        Debug.Log(groundedCount);
         if (collision.gameObject.CompareTag("BP"))
         {
             touchingBP = true;
@@ -233,13 +234,19 @@ public class CharacterController : MonoBehaviour
     }
 
     private void OnCollisionExit2D(Collision2D collision)
-    {
-        //Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
+    {    
         if(collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet")
         {
             return;
         }
-        onGround = false;
+        Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
+
+        // return if still still in *contact* with some object 
+
+        // 
+
+
+        groundedCount--;
     }
 
     void Jumping(Rigidbody2D body)
