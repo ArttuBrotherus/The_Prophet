@@ -89,6 +89,9 @@ public class CharacterController : MonoBehaviour
         }
 
         GetComponent<Rigidbody2D>().gravityScale = 1;
+
+        var target_script = GameObject.FindWithTag("Target").GetComponent<Target>();
+        target_script.changeSpriteBack();
     }
 
     public void StartRotation(Transform center_of_target, float orbiting_direction_number)
@@ -225,8 +228,9 @@ public class CharacterController : MonoBehaviour
         {
             return;
         }
+
         groundedCount++;
-        Debug.Log(groundedCount);
+
         if (collision.gameObject.CompareTag("BP"))
         {
             touchingBP = true;
@@ -239,12 +243,8 @@ public class CharacterController : MonoBehaviour
         {
             return;
         }
-        Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
 
-        // return if still still in *contact* with some object 
-
-        // 
-
+        //Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
 
         groundedCount--;
     }
