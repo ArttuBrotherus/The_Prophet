@@ -90,6 +90,8 @@ public class CharacterController : MonoBehaviour
 
         GetComponent<Rigidbody2D>().gravityScale = 1;
 
+        //Orbiting has ended so the program changes the target block sprite
+        //back to normal
         var target_script = GameObject.FindWithTag("Target").GetComponent<Target>();
         target_script.changeSpriteBack();
     }

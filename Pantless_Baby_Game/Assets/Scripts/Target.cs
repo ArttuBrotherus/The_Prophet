@@ -50,6 +50,10 @@ public class Target : MonoBehaviour
 
             Debug.Assert(this.gameObject.transform.GetChild(0) != null, "transform has child");
 
+            //The target block the player starts to orbit is tagged
+            //This is because then this block can be located via this one-of-a-kind
+            //tag and then its sprite can be changed back to normal after
+            //orbiting has ended
             this.gameObject.tag = "Target";
 
             player_controller.StartRotation(this.gameObject.transform.GetChild(0), orbiting_number);

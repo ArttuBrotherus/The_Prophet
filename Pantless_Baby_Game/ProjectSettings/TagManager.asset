@@ -8,7 +8,7 @@ TagManager:
   - GameMaster
   - BP
   - Floor
-  - Wall_Surface
+  - Target
   layers:
   - Default
   - TransparentFX
