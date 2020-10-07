@@ -440,7 +440,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36edc320e47e9514e96efb428b7e54e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackIndex: 0
+  track:
+  - startPoint: {x: 67, y: -21}
+    direction: {x: 0, y: -1}
+    distance: 2
+  - startPoint: {x: 67, y: -23}
+    direction: {x: 0, y: 1}
+    distance: 2
+  - startPoint: {x: 67, y: -21}
+    direction: {x: -1, y: 0}
+    distance: 4
+  - startPoint: {x: 63, y: -21}
+    direction: {x: 1, y: 0}
+    distance: 4
 --- !u!1 &246084248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1432,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36edc320e47e9514e96efb428b7e54e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackIndex: 1
+  track:
+  - startPoint: {x: 65, y: -23}
+    direction: {x: -1, y: 0}
+    distance: 2
+  - startPoint: {x: 63, y: -23}
+    direction: {x: 1, y: 0}
+    distance: 2
 --- !u!212 &823014814
 SpriteRenderer:
   m_ObjectHideFlags: 0
