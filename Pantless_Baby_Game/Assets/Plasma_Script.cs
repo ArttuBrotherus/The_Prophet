@@ -22,10 +22,8 @@ public class Plasma_Script : MonoBehaviour
             },
             new MovementStep[]
             {
-                new MovementStep{startPoint = new Vector2(67f, -21f), direction = new Vector2(0, -1), distance = 2f },
-                new MovementStep{startPoint = new Vector2(67f, -23f), direction = new Vector2(0, 1), distance = 2f},
-                new MovementStep{startPoint = new Vector2(67f, -21f), direction = new Vector2(-1, 0), distance = 4f},
-                new MovementStep{startPoint = new Vector2(63f, -21f), direction = new Vector2(1, 0), distance = 4f},
+                new MovementStep{startPoint = new Vector2(65f, -23f), direction = new Vector2(-1, 0), distance = 2f },
+                new MovementStep{startPoint = new Vector2(63f, -23f), direction = new Vector2(1, 0), distance = 2f},
             }
         };
 
@@ -59,4 +57,10 @@ public class Plasma_Script : MonoBehaviour
             travelledDistance = 0;
         }
     }
+
+    //Rail end points have Box-Triggers, the time the trap needs to travel from
+    //A to B is kept track of. The trap needs some time to go this distance.
+    //When leaving some point, you switch off the collider of the trap,
+    //then you switch it back on to find out in which direction the
+    //current part of the trail sets the trap towards.
 }
