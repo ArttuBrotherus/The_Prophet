@@ -148,6 +148,13 @@ public class CharacterController : MonoBehaviour
         //isn't the case?
         blockAngle += Time.deltaTime * 2 * orbiting_number;
 
+        //Change blockDistance mid-flight:
+        if (Input.GetKey(KeyCode.S) && !(Input.GetKey(KeyCode.W))){
+            blockDistance += Time.deltaTime * 1.25f;
+        }else if(Input.GetKey(KeyCode.W) && !(Input.GetKey(KeyCode.S))){
+            blockDistance -= Time.deltaTime * 1.25f;
+        }
+
         float ukkoX = Mathf.Cos(blockAngle) * blockDistance + pearl_block.position.x;
         float ukkoY = Mathf.Sin(blockAngle) * blockDistance + pearl_block.position.y;
 

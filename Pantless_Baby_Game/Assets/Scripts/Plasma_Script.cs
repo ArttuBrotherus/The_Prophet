@@ -55,7 +55,7 @@ public class Plasma_Script : MonoBehaviour
             var previousDirection = currentStep.direction.x;
             Step++;
 
-            Debug.Log(previousDirection + ", " + currentStep.direction.x);
+            //Debug.Log(previousDirection + ", " + currentStep.direction.x);
             if(currentStep.direction.x != previousDirection)
             {
                 goingRight = !goingRight;
