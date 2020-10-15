@@ -48,7 +48,7 @@ public class Plasma_Script : MonoBehaviour
         var x = currentStep.startPoint.x + currentStep.direction.x * travelledDistance + 0.5f;
         var y = currentStep.startPoint.y + currentStep.direction.y * travelledDistance - 0.5f;
         transform.position = new Vector2(x, y);
-        travelledDistance += Time.deltaTime;
+        travelledDistance += Time.deltaTime * 1.0f;
 
         if(travelledDistance > currentStep.distance)
         {

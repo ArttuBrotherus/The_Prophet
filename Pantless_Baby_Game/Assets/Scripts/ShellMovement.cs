@@ -5,20 +5,54 @@ using UnityEngine;
 public class ShellMovement : MonoBehaviour
 {
 
-    Sprite redRectangle;
+    private IEnumerator coroutine;
+
+    public Sprite redRectangle;
     
     float maxTravelDistance = 4;
     float currentTravelDistance = 0;
 
-    //1 when going up
-    //- 1 when going down
-    int direction = 1;
+    //List<SpawnRocksMethod> spawnRocks = new List<SpawnRocksMethod>();
+
+    List<Vector2> route = new List<Vector2>();
+
     const float shellSpeed = 1.2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //
+        coroutine = addNewDirection();
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator addNewDirection()
+    {
+        while (true)
+        {
+            newDirection();
+
+            //shellspeed is const, for now
+            yield return new WaitForSeconds(1f / shellSpeed);
+        }     
+    }
+
+    bool dir;
+
+    void newDirection()
+    {
+        var shellPos = transform.position;
+        if(dir)
+        {
+            route.Add(new Vector2(- 1, 0));
+            dir = false;
+            Debug.Log("New direction! If!");
+        }
+        else
+        {
+            route.Add(new Vector2(0, - 1));
+            dir = true;
+            Debug.Log("New direction! Else!");
+        }
     }
 
     //rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
@@ -30,16 +64,15 @@ public class ShellMovement : MonoBehaviour
     }
 
     void moveShell(){
+
         var shellPos = transform.position;
+        var crntItem = route[route.Count - 1];
 
-        transform.position = new Vector2(shellPos.x, shellPos.y + Time.deltaTime * shellSpeed * direction);
+        transform.position = new Vector2(shellPos.x + crntItem.x * Time.deltaTime * shellSpeed,
 
-        currentTravelDistance += direction * Time.deltaTime;
+            shellPos.y + crntItem.y * Time.deltaTime * shellSpeed);
 
-        if (currentTravelDistance > maxTravelDistance || currentTravelDistance < 0f)
-        {
-            direction = -direction;
-        }
+        currentTravelDistance += shellSpeed * Time.deltaTime;
 
     }
 
