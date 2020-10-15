@@ -10,19 +10,15 @@ public class ShellMovement : MonoBehaviour
     float maxTravelDistance = 4;
     float currentTravelDistance = 0;
 
-    //(used for index)
-    //0 when going up
-    //1 when going down
-    int travelNumber = 0;
-
-    delegate void proceedTravel();
+    //1 when going up
+    //- 1 when going down
+    int direction = 1;
+    const float shellSpeed = 1.2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        List<proceedTravel> travelOn = new List<proceedTravel>();
-        travelOn.Add(goUp); //0
-        travelOn.Add(goDown); //1
+        //
     }
 
     //rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
@@ -30,24 +26,21 @@ public class ShellMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //travelOn[travelNumber]();
+        moveShell();
     }
 
-    void goUp(){
-        transform.position.y += Time.deltaTime;
-        currentTravelDistance += Time.deltaTime;
-        if(currentTravelDistance > maxTravelDistance){
-            travelNumber = 1;
-        }
-    }
+    void moveShell(){
+        var shellPos = transform.position;
 
-    void goDown(){
-        transform.position.y -= Time.deltaTime * 2;
-        currentTravelDistance -= Time.deltaTime * 2;
-        //transform.position.y, currentTravelDistance -= Time.deltaTime * 2;
-        if(currentTravelDistance < 0f){
-            travelNumber = 0;
+        transform.position = new Vector2(shellPos.x, shellPos.y + Time.deltaTime * shellSpeed * direction);
+
+        currentTravelDistance += direction * Time.deltaTime;
+
+        if (currentTravelDistance > maxTravelDistance || currentTravelDistance < 0f)
+        {
+            direction = -direction;
         }
+
     }
 
     //---------------------------------------------------
