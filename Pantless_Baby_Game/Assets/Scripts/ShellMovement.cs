@@ -16,7 +16,11 @@ public class ShellMovement : MonoBehaviour
 
     List<Vector2> route = new List<Vector2>();
 
-    const float shellSpeed = 1.2f;
+    float shellSpeed = 1.2f;
+
+    //1 when going
+    //- 1 when returning
+    int returning = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -31,28 +35,38 @@ public class ShellMovement : MonoBehaviour
         {
             newDirection();
 
-            //shellspeed is const, for now
             yield return new WaitForSeconds(1f / shellSpeed);
         }     
     }
 
-    bool dir;
-
     void newDirection()
     {
+
         var shellPos = transform.position;
-        if(dir)
+
+        if(returning == 1)
         {
-            route.Add(new Vector2(- 1, 0));
-            dir = false;
-            Debug.Log("New direction! If!");
+            route.Add(new Vector2(0, 1));
+
+            if (route.Count > 3)
+            {
+                returning = -1;
+                shellSpeed *= 2;
+            }
         }
         else
         {
-            route.Add(new Vector2(0, - 1));
-            dir = true;
-            Debug.Log("New direction! Else!");
+            //subtract items
+
+            route.Remove(route[route.Count - 1]);
+
+            if (route.Count < 2)
+            {
+                returning = 1;
+                shellSpeed /= 2;
+            }
         }
+
     }
 
     //rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
@@ -65,15 +79,23 @@ public class ShellMovement : MonoBehaviour
 
     void moveShell(){
 
+        transform.position = newShellPos();
+
+        currentTravelDistance += shellSpeed * Time.deltaTime;
+    }
+
+    Vector2 newShellPos()
+    {
         var shellPos = transform.position;
         var crntItem = route[route.Count - 1];
 
-        transform.position = new Vector2(shellPos.x + crntItem.x * Time.deltaTime * shellSpeed,
-
-            shellPos.y + crntItem.y * Time.deltaTime * shellSpeed);
-
-        currentTravelDistance += shellSpeed * Time.deltaTime;
-
+        float[] coordinates = new float[2];
+        for(int i = 0; i < 2; i++)
+        {
+            var itemAndShell = i == 0 ? shellPos.x + crntItem.x : shellPos.y + crntItem.y;
+            coordinates[i] = itemAndShell * Time.deltaTime * shellSpeed * returning;
+        }
+        return new Vector2(coordinates[0], coordinates[1]);
     }
 
     //---------------------------------------------------
