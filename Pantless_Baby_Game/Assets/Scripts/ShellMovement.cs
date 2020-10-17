@@ -18,9 +18,9 @@ public class ShellMovement : MonoBehaviour
 
     float shellSpeed = 1.2f;
 
-    //1 when going
-    //- 1 when returning
-    int returning = 1;
+    //- 1 when going
+    //1 when returning
+    int returning = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -44,29 +44,54 @@ public class ShellMovement : MonoBehaviour
 
         var shellPos = transform.position;
 
-        if(returning == 1)
+        //route.Add(new Vector2(0, 1));
+
+        if (returning == -1)
         {
-            route.Add(new Vector2(0, 1));
+
+            var direction = seekPlayer();
+            route.Add(direction);
 
             if (route.Count > 3)
             {
-                returning = -1;
+                returning = 1;
                 shellSpeed *= 2;
             }
         }
         else
         {
-            //subtract items
-
             route.Remove(route[route.Count - 1]);
 
             if (route.Count < 2)
             {
-                returning = 1;
+                shellPos.x = 0;
+                shellPos.y = 0.75f;
+
+                returning = -1;
                 shellSpeed /= 2;
             }
         }
 
+    }
+
+    Vector2 seekPlayer()
+    {
+        var shellPos = transform.position;
+        var playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+
+        //down = Vector2(0, -1)
+        //right = Vector2(1, 0)
+
+        if(Mathf.Abs(shellPos.x - playerPos.x) > Mathf.Abs(shellPos.y - playerPos.y))
+        {
+            var rightOrLeft = shellPos.x > playerPos.x ? Vector2.left : Vector2.right;
+            return rightOrLeft;
+        }
+        else
+        {
+            var upOrDown = shellPos.y > playerPos.y ? Vector2.down : Vector2.up;
+            return upOrDown;
+        }
     }
 
     //rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
@@ -89,13 +114,10 @@ public class ShellMovement : MonoBehaviour
         var shellPos = transform.position;
         var crntItem = route[route.Count - 1];
 
-        float[] coordinates = new float[2];
-        for(int i = 0; i < 2; i++)
-        {
-            var itemAndShell = i == 0 ? shellPos.x + crntItem.x : shellPos.y + crntItem.y;
-            coordinates[i] = itemAndShell * Time.deltaTime * shellSpeed * returning;
-        }
-        return new Vector2(coordinates[0], coordinates[1]);
+        var x = shellPos.x + crntItem.x * Time.deltaTime * shellSpeed * -returning;
+        var y = shellPos.y + crntItem.y * Time.deltaTime * shellSpeed * -returning;
+
+        return new Vector2(x, y);
     }
 
     //---------------------------------------------------
