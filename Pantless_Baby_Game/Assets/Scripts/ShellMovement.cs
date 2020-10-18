@@ -9,10 +9,7 @@ public class ShellMovement : MonoBehaviour
 
     public Sprite redRectangle;
     
-    float maxTravelDistance = 4;
     float currentTravelDistance = 0;
-
-    //List<SpawnRocksMethod> spawnRocks = new List<SpawnRocksMethod>();
 
     List<Vector2> route = new List<Vector2>();
 
@@ -44,8 +41,6 @@ public class ShellMovement : MonoBehaviour
 
         var shellPos = transform.position;
 
-        //route.Add(new Vector2(0, 1));
-
         if (returning == -1)
         {
 
@@ -60,16 +55,17 @@ public class ShellMovement : MonoBehaviour
         }
         else
         {
-            route.Remove(route[route.Count - 1]);
-
-            if (route.Count < 2)
+            if (route.Count == 1)
             {
                 shellPos.x = 0;
                 shellPos.y = 0.75f;
+                Debug.Log(shellPos.x);
 
                 returning = -1;
                 shellSpeed /= 2;
             }
+
+            if (route.Count != 1) route.Remove(route[route.Count - 1]);
         }
 
     }
@@ -99,6 +95,8 @@ public class ShellMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(0, 0, 180f * Time.deltaTime);
+
         moveShell();
     }
 
