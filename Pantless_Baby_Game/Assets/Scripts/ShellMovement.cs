@@ -13,7 +13,8 @@ public class ShellMovement : MonoBehaviour
 
     List<Vector2> route = new List<Vector2>();
 
-    float shellSpeed = 1.2f;
+    const float shellSpeedBase = 1.2f;
+    float shellSpeed = shellSpeedBase;
 
     //- 1 when going
     //1 when returning
@@ -38,35 +39,31 @@ public class ShellMovement : MonoBehaviour
 
     void newDirection()
     {
-
-        var shellPos = transform.position;
-
         if (returning == -1)
-        {
-
-            var direction = seekPlayer();
-            route.Add(direction);
-
-            if (route.Count > 3)
+        {  
+            if (route.Count == 4)
             {
                 returning = 1;
-                shellSpeed *= 2;
+                shellSpeed = shellSpeedBase * 2;
+            } else
+            {
+                route.Add(seekPlayer());
             }
         }
         else
         {
             if (route.Count == 1)
             {
-                shellPos.x = 0;
-                shellPos.y = 0.75f;
-                Debug.Log(shellPos.x);
+                Debug.Log("local position: " + transform.localPosition);
+                transform.localPosition = new Vector3(0, 0.75f, 0);
 
                 returning = -1;
-                shellSpeed /= 2;
+                shellSpeed = shellSpeedBase;
             }
 
             if (route.Count != 1) route.Remove(route[route.Count - 1]);
         }
+        Debug.Log(string.Format("New direction: returning: {0}   route count: {1}", returning, route.Count));
 
     }
 
@@ -80,13 +77,11 @@ public class ShellMovement : MonoBehaviour
 
         if(Mathf.Abs(shellPos.x - playerPos.x) > Mathf.Abs(shellPos.y - playerPos.y))
         {
-            var rightOrLeft = shellPos.x > playerPos.x ? Vector2.left : Vector2.right;
-            return rightOrLeft;
+            return shellPos.x > playerPos.x ? Vector2.left : Vector2.right;
         }
         else
         {
-            var upOrDown = shellPos.y > playerPos.y ? Vector2.down : Vector2.up;
-            return upOrDown;
+            return shellPos.y > playerPos.y ? Vector2.down : Vector2.up;
         }
     }
 

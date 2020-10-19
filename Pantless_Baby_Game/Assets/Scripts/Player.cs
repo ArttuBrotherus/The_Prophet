@@ -15,46 +15,6 @@ public class Player : MonoBehaviour {
     {
         
         gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GamePoints>();
-
-        /*
-        
-        GameObject[] allBlocs = null;
-        foreach(var block in allBlocs)
-        {
-            var x = Convert.ToInt32( block.transform.position.x );
-            var y = Convert.ToInt32(block.transform.position.y);
-            blockLookup[Tuple.Create(x, y)] = block;
-        }
-
-        // Iterate row by row horizontally for "floors"
-        for(int y= 1; y<100; y++) {
-            for (int x = 1; x < 100; x++)
-            {
-                // Is the a block here?
-                var isBlock = blockLookup.ContainsKey(Tuple.Create(x, y));
-                var isBlockAbove = blockLookup.ContainsKey(Tuple.Create(x, y-1));
-                var isBlockBelow = blockLookup.ContainsKey(Tuple.Create(x+1, y));
-                if (isBlock && (!isBlockAbove || !isBlockBelow))
-                {
-                    // start a new floow or continue previous floor
-                }
-
-            }
-        }
-
-        // Iterate column by column vertically for "walls"
-        for (int x = 1; y < 100; x++)
-        {
-            for (int y = 1; y < 100; x++)
-            {
-                // Is the a block here?
-                var isBlock = blockLookup.ContainsKey(Tuple.Create(x, y));
-
-            }
-        }
-
-    */
-
     }
 
     void Update() {
