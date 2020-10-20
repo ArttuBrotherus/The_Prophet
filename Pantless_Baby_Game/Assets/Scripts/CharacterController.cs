@@ -188,8 +188,7 @@ public class CharacterController : MonoBehaviour
         body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
 
         if (Input.GetButtonDown("Jump") && groundedCount > 0)
-        {
-            //transform.position = new Vector3(- 2, - 13);           
+        {         
             if (touchingBP)
             {
                 if(Input.GetKey(KeyCode.S))

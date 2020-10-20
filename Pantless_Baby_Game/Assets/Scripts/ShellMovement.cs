@@ -54,7 +54,6 @@ public class ShellMovement : MonoBehaviour
         {
             if (route.Count == 1)
             {
-                Debug.Log("local position: " + transform.localPosition);
                 transform.localPosition = new Vector3(0, 0.75f, 0);
 
                 returning = -1;
@@ -63,7 +62,7 @@ public class ShellMovement : MonoBehaviour
 
             if (route.Count != 1) route.Remove(route[route.Count - 1]);
         }
-        Debug.Log(string.Format("New direction: returning: {0}   route count: {1}", returning, route.Count));
+        //Debug.Log(string.Format("New direction: returning: {0}   route count: {1}", returning, route.Count));
 
     }
 
