@@ -9,6 +9,7 @@ TagManager:
   - BP
   - Floor
   - Target
+  - Enemy
   layers:
   - Default
   - TransparentFX

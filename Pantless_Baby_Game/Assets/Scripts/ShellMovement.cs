@@ -96,14 +96,14 @@ public class ShellMovement : MonoBehaviour
 
     void moveShell(){
 
-        transform.position = newShellPos();
+        transform.localPosition = newShellPos();
 
         currentTravelDistance += shellSpeed * Time.deltaTime;
     }
 
     Vector2 newShellPos()
     {
-        var shellPos = transform.position;
+        var shellPos = transform.localPosition;
         var crntItem = route[route.Count - 1];
 
         var x = shellPos.x + crntItem.x * Time.deltaTime * shellSpeed * -returning;
