@@ -10,6 +10,7 @@ TagManager:
   - Floor
   - Target
   - Enemy
+  - HiddenIn-Game
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3845372503
+    locked: 0
+  - name: Enemy
+    uniqueID: 2009829945
     locked: 0
   - name: Foreground
     uniqueID: 2478002959
