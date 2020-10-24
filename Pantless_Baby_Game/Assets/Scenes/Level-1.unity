@@ -10642,7 +10642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb721905166efa46a9a1a560ebc492e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 7
+  characterSpeed: 5
   jumpTakeOffSpeed: 7
   normal_movement: 1
   groundedCount: 0

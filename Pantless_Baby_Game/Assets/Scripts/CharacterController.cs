@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-
-    public float maxSpeed = 7;
-    public float jumpTakeOffSpeed = 7;
+    public float characterSpeed;
+    public float jumpTakeOffSpeed;
     public bool normal_movement = true;
     public int groundedCount = 0;
 
@@ -50,14 +49,7 @@ public class CharacterController : MonoBehaviour
     {
         //We also check whether the player is in mid-air. This is to avoid forcing
         //the player character inside a collider.
-        if(normal_movement && groundedCount == 0) // !grounded     grounded: groundedCOunt > 0
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (normal_movement && groundedCount == 0);
     }
 
     void StopRotation()
@@ -163,7 +155,7 @@ public class CharacterController : MonoBehaviour
 
         var movement = Input.GetAxis("Horizontal");
 
-        body.velocity = new Vector2(movement * 5.0f, body.velocity.y);
+        body.velocity = new Vector2(movement * characterSpeed, body.velocity.y);
 
         if (Input.GetButtonDown("Jump") && groundedCount > 0)
         {         
