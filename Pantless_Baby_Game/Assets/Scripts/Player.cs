@@ -9,8 +9,6 @@ public class Player : MonoBehaviour {
     private bool dead = false;
     float death_time;
 
-    Dictionary<Tuple<int, int>, GameObject> blockLookup = new Dictionary<Tuple<int, int>, GameObject>();
-
     private void Start()
     {
         

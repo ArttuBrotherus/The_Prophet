@@ -18,6 +18,8 @@ public class GameMaster : MonoBehaviour {
         {
             hideItem.GetComponent<SpriteRenderer>().enabled = false;
         }
+
+        Application.targetFrameRate = 60;
     }
 
 }

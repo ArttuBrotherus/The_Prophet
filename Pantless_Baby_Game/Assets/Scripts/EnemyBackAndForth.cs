@@ -24,7 +24,6 @@ public class EnemyBackAndForth : MonoBehaviour
 
     public void Turn()
     {
-        Debug.Log("Turn");
         if (spriteRenderer.flipX)
         {
             spriteRenderer.flipX = false;

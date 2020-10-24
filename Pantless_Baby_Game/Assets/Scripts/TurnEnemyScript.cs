@@ -23,7 +23,6 @@ public class TurnEnemyScript : MonoBehaviour
         {
             var enemy = target.GetComponent<EnemyBackAndForth>();
             enemy.Turn();
-            Debug.Log("Trigger");
         }
     }
 }
