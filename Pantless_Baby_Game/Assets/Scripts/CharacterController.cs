@@ -46,25 +46,6 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    /*
-    public void StartRotation(Vector3 position)
-    {
-        // a = ..
-        // a[index] =
-        
-        // "Classic" for-loop way of initiating 10 rope perticles
-        // rope_particles = new GameObject[10];
-        // for(int particle = 0; particle < rope_particles.Length; particle++){
-        //    rope_particles[particle] = Instantiate(Rope_Particle, position, Quaternion.identity);
-        // }
-
-        // *Better* More modern *functional programming* way of initiating 10 rope particles:
-        // This avoids (a) creation of array with "new", (b) error-prone manual manipulation of index-variable and
-        // (c) modifying the array contents.
-        rope_particles = Enumerable.Range(1,RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, position, Quaternion.identity)).ToArray();
-
-    */
-
     public bool IsMovementNormal()
     {
         //We also check whether the player is in mid-air. This is to avoid forcing
@@ -115,8 +96,6 @@ public class CharacterController : MonoBehaviour
         var deltaY = transform.position.y - pearl_block.position.y;
 
         blockAngle = correctBlockAngle(deltaX, deltaY);
-
-        //Debug.Log("deltaX: " + deltaX + ", deltaY: " + deltaY + ", blockAngle: " + Mathf.Rad2Deg * blockAngle);
 
         blockDistance = Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY);
     }
@@ -171,7 +150,6 @@ public class CharacterController : MonoBehaviour
         }
 
         //orbiting_number = 1 when orbiting clockwise (when rotating pearl block)
-        //transform.Rotate(0, 0, orbiting_number * 100f * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -204,8 +182,6 @@ public class CharacterController : MonoBehaviour
             Jumping(body);
         }
 
-        //var movement = Input.GetAxis("Horizontal");
-
         if (body.velocity.x != 0)
         {
             GetComponent<Animator>().enabled = true;
@@ -227,7 +203,6 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("OnCollisionEnter, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
         if (!normal_movement)
         {
             StopRotation();
@@ -251,8 +226,6 @@ public class CharacterController : MonoBehaviour
         {
             return;
         }
-
-        //Debug.Log("OnCollisionExit, " + collision.collider.name + ", " + collision.gameObject + ", " + collision.otherCollider.name);
 
         groundedCount--;
     }

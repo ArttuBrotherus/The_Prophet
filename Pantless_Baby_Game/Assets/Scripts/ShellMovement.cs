@@ -112,32 +112,5 @@ public class ShellMovement : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    //---------------------------------------------------
-
-    /*
-
-    // define a delegate type to match the required method signature
-     delegate void SpawnRocksMethod();
-     void CreateList()
-     {
-         // create a list of delegate objects as placeholders for the methods.
-         // note the methods must all be of type void with no parameters
-         // that is they must all have the same signature.
-         List<SpawnRocksMethod> spawnRocks = new List<SpawnRocksMethod>();
-         spawnRocks.Add(spawnRocks1);
-         spawnRocks.Add(spawnRocks2);
-         // call a method ...
-         spawnRocks[0]();
-     }
-     //confirmed working
-     void spawnRocks1()
-     {
-         Instantiate something;
-     }
-     void spawnRocks2()
-     {
-         Instantiate something;
-     }
-
-    */
+   
 }
