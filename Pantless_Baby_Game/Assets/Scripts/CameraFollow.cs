@@ -5,10 +5,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
     public Transform target;
-    public float damping = 1;
-    public float lookAheadFactor = 3;
-    public float lookAheadReturnSpeed = 0.5f;
-    public float lookAheadMoveTreshold = 0.1f;
+    public float damping; //originally 1
+    public float lookAheadFactor; //originally 3
+    public float lookAheadReturnSpeed; //originally 0.5
+    public float lookAheadMoveTreshold; //originally 0.1
 
     float offsetZ;
     Vector3 lastTargetPosition;

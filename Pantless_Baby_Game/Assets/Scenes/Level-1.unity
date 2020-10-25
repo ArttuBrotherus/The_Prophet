@@ -155,10 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2051280049}
-  damping: 1
-  lookAheadFactor: 5
+  damping: 0.2
+  lookAheadFactor: 10
   lookAheadReturnSpeed: 20
-  lookAheadMoveTreshold: 0.1
+  lookAheadMoveTreshold: 0.5
 --- !u!81 &30077816
 AudioListener:
   m_ObjectHideFlags: 0

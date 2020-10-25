@@ -191,6 +191,11 @@ public class CharacterController : MonoBehaviour
         {
             GetComponent<Animator>().enabled = false;
         }
+
+        if(body.velocity.y < - 10)
+        {
+            body.velocity = new Vector2(body.velocity.x, - 10);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
