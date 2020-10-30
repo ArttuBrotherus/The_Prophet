@@ -54,7 +54,6 @@ public class CharacterController : MonoBehaviour
 
     void StopRotation()
     {
-        Debug.Log("StopRotation");
         normal_movement = true;
 
         foreach(GameObject particle in rope_particles)
