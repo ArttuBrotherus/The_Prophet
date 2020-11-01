@@ -11,7 +11,7 @@ public class ShellMovement : MonoBehaviour
     
     float currentTravelDistance = 0;
 
-    List<Vector2> route = new List<Vector2>();
+    public List<Vector2> route = new List<Vector2>();
 
     const float shellSpeedBase = 1.2f;
     float shellSpeed = shellSpeedBase;
@@ -52,15 +52,18 @@ public class ShellMovement : MonoBehaviour
         }
         else
         {
-            if (route.Count == 1)
+            route.Remove(route[route.Count - 1]);
+          
+            if (route.Count == 0)
             {
                 transform.localPosition = new Vector3(0, 0.75f, 0);
 
                 returning = -1;
                 shellSpeed = shellSpeedBase;
+
+                route.Add(seekPlayer());
             }
 
-            if (route.Count != 1) route.Remove(route[route.Count - 1]);
         }
 
     }
