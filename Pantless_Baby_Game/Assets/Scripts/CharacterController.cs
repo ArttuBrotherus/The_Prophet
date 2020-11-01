@@ -21,15 +21,14 @@ public class CharacterController : MonoBehaviour
 
     Transform pearl_block;
     float blockAngle;
-    int RopeParticleAmount = 20;
+    const int RopeParticleAmount = 20;
     float blockDistance;
 
-    float orbiting_number;
+    float orbiting_direction; // orbiting_direction = 1 when orbiting clockwise (when rotating pearl block)
 
+    //used in determining whether character can drop off from a platform
     bool touchingBP = false;
 
-
-    // Use this for initialization
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -56,10 +55,7 @@ public class CharacterController : MonoBehaviour
     {
         normal_movement = true;
 
-        foreach(GameObject particle in rope_particles)
-        {
-            Destroy(particle);
-        }
+        foreach(GameObject particle in rope_particles) Destroy(particle);
 
         GetComponent<Rigidbody2D>().gravityScale = 1;
 
@@ -82,7 +78,7 @@ public class CharacterController : MonoBehaviour
 
         rope_particles = Enumerable.Range(1, RopeParticleAmount).Select(_ => Instantiate(Rope_Particle, center_of_target.position, Quaternion.identity)).ToArray();
 
-        orbiting_number = orbiting_direction_number;
+        orbiting_direction = orbiting_direction_number;
 
         var deltaX = transform.position.x - pearl_block.position.x;
         var deltaY = transform.position.y - pearl_block.position.y;
@@ -95,29 +91,17 @@ public class CharacterController : MonoBehaviour
     float correctBlockAngle(float deltaX, float deltaY)
     {
         var quandrantAngle = Mathf.Atan2(Mathf.Abs(deltaY), Mathf.Abs(deltaX));
-        if (deltaX > 0 && deltaY > 0) // oik ylä
-        {
-            return quandrantAngle;
-        }
-        else if (deltaX > 0 && deltaY < 0) // oik ala
-        {
-            return -quandrantAngle + Mathf.PI * 2.0f;
-        }
-        else if (deltaX < 0 && deltaY < 0) // vase ala
-        {
-            return quandrantAngle + Mathf.PI * 1.0f;
-        }
-        else // vasen ylä
-        {
-            return -quandrantAngle + Mathf.PI * 1.0f;
-        }
+        if (deltaX > 0 && deltaY > 0) return quandrantAngle; // oik ylä
+        if (deltaX > 0 && deltaY < 0) return -quandrantAngle + Mathf.PI * 2.0f; // oik ala
+        if (deltaX < 0 && deltaY < 0) return quandrantAngle + Mathf.PI * 1.0f; // vase ala
+        return -quandrantAngle + Mathf.PI * 1.0f; // vasen ylä
     }
 
     void LevitationMovement(){
 
         //Orbiting should be clockwise if orbiting_number is 1, how come this, possibly,
         //isn't the case?
-        blockAngle += Time.deltaTime * 2 * orbiting_number;
+        blockAngle += Time.deltaTime * 2 * orbiting_direction;
 
         //Change blockDistance mid-flight:
         if (Input.GetKey(KeyCode.S) && !(Input.GetKey(KeyCode.W))){
@@ -135,18 +119,16 @@ public class CharacterController : MonoBehaviour
         for (int particle = 0; particle < rope_particles.Length; particle++)
         {
             float distance_progress = (particle + 1) / Convert.ToSingle(RopeParticleAmount);
-            float x = pearl_block.position.x * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.x;
-            float y = pearl_block.position.y * distance_progress + (1 - distance_progress) * this.gameObject.transform.position.y;
-            // 2. set the desired position for the rope particle
-            rope_particles[particle].transform.position = new Vector3(x, y, 1);
+            // 2. set the desired position for the rope particle, use vector calculation
+            rope_particles[particle].transform.position = 
+                pearl_block.position * distance_progress + 
+                (1 - distance_progress) * gameObject.transform.position;
         }
-
-        //orbiting_number = 1 when orbiting clockwise (when rotating pearl block)
 
         if (Input.GetButtonDown("Jump"))
         {
             StopRotation();
-            Jumping(GetComponent<Rigidbody2D>());
+            Jumping();
         }
     }
 
@@ -171,7 +153,7 @@ public class CharacterController : MonoBehaviour
                     return;
                 }
             }
-            Jumping(body);
+            Jumping();
         }
 
         if (body.velocity.x != 0)
@@ -185,7 +167,6 @@ public class CharacterController : MonoBehaviour
             {
                 spriteRenderer.flipX = true;
             }
-
         }
         else
         {
@@ -196,35 +177,24 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!normal_movement)
-        {
-            StopRotation();
-        }
-        if (collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet")
-        {
-            return;
-        }
+        if (!normal_movement) StopRotation();
+
+        if (collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet") return;
 
         groundedCount++;
 
-        if (collision.gameObject.CompareTag("BP"))
-        {
-            touchingBP = true;
-        }
+        if (collision.gameObject.CompareTag("BP")) touchingBP = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {    
-        if(collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet")
-        {
-            return;
-        }
-
+        if(collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet") return;
         groundedCount--;
     }
 
-    void Jumping(Rigidbody2D body)
+    void Jumping()
     {
+        var body = GetComponent<Rigidbody2D>();
         body.velocity = new Vector2(body.velocity.x, jumpTakeOffSpeed);
     }
 
