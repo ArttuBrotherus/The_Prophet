@@ -11,6 +11,7 @@ TagManager:
   - Target
   - Enemy
   - HiddenIn-Game
+  - LevelProportions
   layers:
   - Default
   - TransparentFX
