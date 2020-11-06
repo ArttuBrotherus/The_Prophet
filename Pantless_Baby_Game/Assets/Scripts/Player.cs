@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     private bool dead = false;
     float death_time;
 
+    Component[] colliders;
+
     private void Start()
     {
         
@@ -44,6 +46,12 @@ public class Player : MonoBehaviour {
         this.GetComponent<Collider2D>().enabled = false;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
         death_time = Time.fixedTime;
+
+        colliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            col.enabled = false;
+        }
     }
 
 }
