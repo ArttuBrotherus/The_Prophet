@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 30077817}
   - component: {fileID: 30077816}
   - component: {fileID: 30077815}
+  - component: {fileID: 30077819}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -311,6 +312,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30077819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30077814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa612f9c68b19fb42a894a6a738a62ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgrounds:
+  - {fileID: 1390022446}
+  - {fileID: 658278884}
+  - {fileID: 1127849999}
+  - {fileID: 949760418}
+  - {fileID: 297855567}
+  parallaxScales:
+  - 0.03
+  - 0.04
+  - 0.05
+  - 0.06
+  - 0.07
 --- !u!1 &83384072
 GameObject:
   m_ObjectHideFlags: 0
@@ -4300,7 +4325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.6073686, b: 0, a: 1}
+  m_Color: {r: 0.9150943, g: 0.62760895, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
