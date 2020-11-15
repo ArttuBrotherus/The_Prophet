@@ -14,7 +14,6 @@ public struct MovementStep
 public class Plasma_Script : MonoBehaviour
 {
 
-    bool goingRight;
     public MovementStep[] track;
     private SpriteRenderer spriteRenderer;
 
@@ -30,51 +29,42 @@ public class Plasma_Script : MonoBehaviour
         //The sprite needs to be flipped if the trap is currently going
         //left
 
-        goingRight = true;
-        if(track[Step].direction.x == -1)
-        {
-            goingRight = false;
-            flipSprite();
-        }
+        flipSprite();
+
     }
+
+    MovementStep CurrentStep => track[Step];
+    Vector2 CurrentDirection => CurrentStep.direction;
 
     // Update is called once per frame
     void Update()
     {
-        var currentStep = track[Step];
 
         //Add and subtract 0.5f because the sprite pivot is in the center so that
         //the image in question can be flipped when changing directions
-        var x = currentStep.startPoint.x + currentStep.direction.x * travelledDistance + 0.5f;
-        var y = currentStep.startPoint.y + currentStep.direction.y * travelledDistance - 0.5f;
+        var x = CurrentStep.startPoint.x + CurrentDirection.x * travelledDistance + 0.5f;
+        var y = CurrentStep.startPoint.y + CurrentDirection.y * travelledDistance - 0.5f;
         transform.position = new Vector2(x, y);
         travelledDistance += Time.deltaTime * 1.0f;
 
-        if(travelledDistance > currentStep.distance)
+        if(travelledDistance > CurrentStep.distance)
         {
-            var previousDirection = currentStep.direction.x;
             Step++;
 
-            //Debug.Log(previousDirection + ", " + currentStep.direction.x);
-            if(currentStep.direction.x != previousDirection)
-            {
-                goingRight = !goingRight;
-                flipSprite();
-            }
-
             if (Step > track.Length - 1) Step = 0;
+            flipSprite();
             travelledDistance = 0;
         }
     }
 
     void flipSprite()
     {
-        if (goingRight)
+        if (CurrentDirection.x == 1)
         {
             //The trap is going to the right, no need to change the sprite from normal
             spriteRenderer.flipX = false;
         }
-        else
+        else if(CurrentDirection.x == -1)
         {
             //Going to the left, have the sprite flipped
             spriteRenderer.flipX = true;
