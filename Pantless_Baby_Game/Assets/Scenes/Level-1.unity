@@ -2381,88 +2381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cc816eb12c52a48aaa0275fa1cd007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &544724153
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 544724155}
-  - component: {fileID: 544724154}
-  m_Layer: 0
-  m_Name: Level-Left
-  m_TagString: HiddenIn-Game
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &544724154
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544724153}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16aa57af4297d7d48ada005830c34ced, type: 3}
-  m_Color: {r: 0.036642075, g: 0, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &544724155
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544724153}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.66, y: -10.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 46
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &602501502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,88 +2544,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 36
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &632069810
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 632069812}
-  - component: {fileID: 632069811}
-  m_Layer: 0
-  m_Name: Level-Right
-  m_TagString: HiddenIn-Game
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &632069811
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632069810}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16aa57af4297d7d48ada005830c34ced, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &632069812
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632069810}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100.03, y: -25.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &649568331
 GameObject:
@@ -6048,30 +5884,24 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1618915667}
     m_ColliderPaths:
-    - - X: 800000000
-        Y: -249843744
+    - - X: 799531321
+        Y: -245468837
+      - X: 800000085
+        Y: -245000057
+      - X: 800000100
+        Y: -245000020
+      - X: 800000100
+        Y: -239999959
+      - X: 800000041
+        Y: -239999900
+      - X: 800000000
+        Y: -239999900
       - X: 800000000
         Y: -220000000
-      - X: 879999900
+      - X: 899843776
         Y: -220000000
-      - X: 879999900
-        Y: -220000041
-      - X: 879999959
-        Y: -220000100
-      - X: 899843796
-        Y: -220000100
-      - X: 899843833
-        Y: -220000085
-      - X: 900000085
-        Y: -219843801
-      - X: 900000100
-        Y: -219843764
-      - X: 900000100
-        Y: -159999959
-      - X: 900000041
-        Y: -159999900
       - X: 900000000
-        Y: -159999900
+        Y: -219843744
       - X: 900000000
         Y: -110312496
       - X: 899687488
@@ -6081,12 +5911,6 @@ CompositeCollider2D:
       - X: 880000000
         Y: -110312496
       - X: 880000000
-        Y: -199999900
-      - X: 879999959
-        Y: -199999900
-      - X: 879999900
-        Y: -199999959
-      - X: 879999900
         Y: -210000000
       - X: 810000000
         Y: -210000000
@@ -6105,11 +5929,21 @@ CompositeCollider2D:
       - X: 790000000
         Y: -210000000
       - X: 790000000
-        Y: -249843744
-      - X: 790156224
-        Y: -250000000
-      - X: 799843776
-        Y: -250000000
+        Y: -239999900
+      - X: 789999959
+        Y: -239999900
+      - X: 789999900
+        Y: -239999959
+      - X: 789999900
+        Y: -245000020
+      - X: 789999915
+        Y: -245000057
+      - X: 790468679
+        Y: -245468837
+      - X: 790468716
+        Y: -245468852
+      - X: 799531284
+        Y: -245468852
     - - X: 360000000
         Y: -179843744
       - X: 360000000
@@ -6142,52 +5976,22 @@ CompositeCollider2D:
         Y: -160000000
       - X: 699843776
         Y: -160000000
-    - - X: 1010000100
-        Y: -320000041
-      - X: 1010000100
-        Y: -279999959
-      - X: 1010000041
-        Y: -279999900
-      - X: 970312492
-        Y: -279999900
-      - X: 970312455
-        Y: -279999915
-      - X: 969999915
-        Y: -280312455
-      - X: 969999900
-        Y: -280312492
-      - X: 969999900
-        Y: -289999900
-      - X: 960312492
-        Y: -289999900
-      - X: 960312455
-        Y: -289999915
-      - X: 959999915
-        Y: -290312455
-      - X: 959999900
-        Y: -290312492
-      - X: 959999900
-        Y: -299999900
-      - X: 910000100
-        Y: -299999900
-      - X: 910000100
-        Y: -300000041
-      - X: 910000041
-        Y: -300000100
-      - X: 899999959
-        Y: -300000100
-      - X: 899999900
-        Y: -300000041
-      - X: 899999900
-        Y: -299999900
-      - X: 740000100
-        Y: -299999900
-      - X: 740000100
-        Y: -289999959
-      - X: 740000041
-        Y: -289999900
+    - - X: 1010000000
+        Y: -280000000
+      - X: 970312512
+        Y: -280000000
+      - X: 970000000
+        Y: -280312512
+      - X: 970000000
+        Y: -290000000
+      - X: 960312512
+        Y: -290000000
+      - X: 960000000
+        Y: -290312512
+      - X: 960000000
+        Y: -300000000
       - X: 740000000
-        Y: -289999900
+        Y: -300000000
       - X: 740000000
         Y: -230312496
       - X: 739687488
@@ -6274,14 +6078,8 @@ CompositeCollider2D:
         Y: -270000000
       - X: 440000000
         Y: -320000000
-      - X: 879999900
+      - X: 1010000000
         Y: -320000000
-      - X: 879999900
-        Y: -320000041
-      - X: 879999959
-        Y: -320000100
-      - X: 1010000041
-        Y: -320000100
     - - X: 610000000
         Y: -209843744
       - X: 610000000
@@ -6326,58 +6124,34 @@ CompositeCollider2D:
         Y: -210000000
       - X: 459687488
         Y: -210000000
-    - - X: 939843833
-        Y: -280000085
-      - X: 940000085
-        Y: -279843801
-      - X: 940000100
-        Y: -279843764
-      - X: 940000100
-        Y: -240312476
-      - X: 940000085
-        Y: -240312439
-      - X: 939687545
-        Y: -239999915
-      - X: 939687508
-        Y: -239999900
-      - X: 930312492
-        Y: -239999900
-      - X: 930312455
-        Y: -239999915
-      - X: 929999915
-        Y: -240312439
-      - X: 929999900
-        Y: -240312476
-      - X: 929999900
-        Y: -259999900
-      - X: 920000100
-        Y: -259999900
-      - X: 920000100
-        Y: -240312476
-      - X: 920000085
-        Y: -240312439
-      - X: 919687545
-        Y: -239999915
-      - X: 919687508
-        Y: -239999900
-      - X: 910312492
-        Y: -239999900
-      - X: 910312455
-        Y: -239999915
-      - X: 909999915
-        Y: -240312439
-      - X: 909999900
-        Y: -240312476
-      - X: 909999900
-        Y: -279843764
-      - X: 909999915
-        Y: -279843801
-      - X: 910156167
-        Y: -280000085
-      - X: 910156204
-        Y: -280000100
-      - X: 939843796
-        Y: -280000100
+    - - X: 940000000
+        Y: -279843744
+      - X: 940000000
+        Y: -240312496
+      - X: 939687488
+        Y: -240000000
+      - X: 930312512
+        Y: -240000000
+      - X: 930000000
+        Y: -240312496
+      - X: 930000000
+        Y: -260000000
+      - X: 920000000
+        Y: -260000000
+      - X: 920000000
+        Y: -240312496
+      - X: 919687488
+        Y: -240000000
+      - X: 910312512
+        Y: -240000000
+      - X: 910000000
+        Y: -240312496
+      - X: 910000000
+        Y: -279843744
+      - X: 910156224
+        Y: -280000000
+      - X: 939843776
+        Y: -280000000
     - - X: 650000000
         Y: -259843744
       - X: 650000000
@@ -6396,16 +6170,16 @@ CompositeCollider2D:
         Y: -260000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 79.984375, y: -25}
-      - {x: 80, y: -24.984375}
+    - - {x: 79.953125, y: -24.546885}
+      - {x: 80.000015, y: -24.500002}
       - {x: 80, y: -22}
-      - {x: 89.98438, y: -22.000008}
-      - {x: 90.000015, y: -21.984377}
+      - {x: 89.984375, y: -22}
+      - {x: 90, y: -21.984375}
       - {x: 90, y: -11.03125}
       - {x: 89.96875, y: -11}
       - {x: 88.03125, y: -11}
       - {x: 88, y: -11.03125}
-      - {x: 87.999985, y: -21}
+      - {x: 88, y: -21}
       - {x: 81, y: -21}
       - {x: 81, y: -19.03125}
       - {x: 80.96875, y: -19}
@@ -6414,8 +6188,8 @@ CompositeCollider2D:
       - {x: 75, y: -20.984375}
       - {x: 75.015625, y: -21}
       - {x: 79, y: -21}
-      - {x: 79, y: -24.984375}
-      - {x: 79.015625, y: -25}
+      - {x: 78.99999, y: -24.500008}
+      - {x: 79.046875, y: -24.546885}
     - - {x: 35.984375, y: -18}
       - {x: 36, y: -17.984375}
       - {x: 36, y: -13.03125}
@@ -6432,15 +6206,15 @@ CompositeCollider2D:
       - {x: 63, y: -14.03125}
       - {x: 63, y: -15.984375}
       - {x: 63.015625, y: -16}
-    - - {x: 101.00001, y: -32.00001}
-      - {x: 101.00001, y: -27.99999}
-      - {x: 97.03124, y: -27.99999}
-      - {x: 96.999985, y: -28.031248}
-      - {x: 96.999985, y: -28.99999}
-      - {x: 96.03124, y: -28.99999}
-      - {x: 95.999985, y: -29.031248}
-      - {x: 95.999985, y: -29.99999}
-      - {x: 74.000015, y: -29.99999}
+    - - {x: 101, y: -32}
+      - {x: 101, y: -28}
+      - {x: 97.03125, y: -28}
+      - {x: 97, y: -28.031252}
+      - {x: 97, y: -29}
+      - {x: 96.03125, y: -29}
+      - {x: 96, y: -29.031252}
+      - {x: 96, y: -30}
+      - {x: 74, y: -30}
       - {x: 74, y: -23.03125}
       - {x: 73.96875, y: -23}
       - {x: 73, y: -23}
@@ -6506,20 +6280,6 @@ CompositeCollider2D:
       - {x: 42, y: -19.03125}
       - {x: 42, y: -20.984375}
       - {x: 42.015625, y: -21}
-    - - {x: 93.984375, y: -28.00001}
-      - {x: 94.000015, y: -27.984379}
-      - {x: 94.00001, y: -24.031244}
-      - {x: 93.96875, y: -23.99999}
-      - {x: 93.03124, y: -23.999992}
-      - {x: 92.999985, y: -24.031248}
-      - {x: 92.999985, y: -25.99999}
-      - {x: 92.000015, y: -25.99999}
-      - {x: 92.00001, y: -24.031244}
-      - {x: 91.96875, y: -23.99999}
-      - {x: 91.03124, y: -23.999992}
-      - {x: 90.999985, y: -24.031248}
-      - {x: 90.99999, y: -27.98438}
-      - {x: 91.015625, y: -28.00001}
     - - {x: 64.984375, y: -26}
       - {x: 65, y: -25.984375}
       - {x: 65, y: -24.03125}
@@ -6528,6 +6288,20 @@ CompositeCollider2D:
       - {x: 63, y: -24.03125}
       - {x: 63, y: -25.984375}
       - {x: 63.015625, y: -26}
+    - - {x: 93.984375, y: -28}
+      - {x: 94, y: -27.984375}
+      - {x: 94, y: -24.03125}
+      - {x: 93.96875, y: -24}
+      - {x: 93.03125, y: -24}
+      - {x: 93, y: -24.03125}
+      - {x: 93, y: -26}
+      - {x: 92, y: -26}
+      - {x: 92, y: -24.03125}
+      - {x: 91.96875, y: -24}
+      - {x: 91.03125, y: -24}
+      - {x: 91, y: -24.03125}
+      - {x: 91, y: -27.984375}
+      - {x: 91.015625, y: -28}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.0000005
 --- !u!50 &1618915666
@@ -14487,7 +14261,7 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 7a2ad35d5ce9f0d4d9417a3f9e5b7d36, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 91260178f021e52419ca0a33c6d7f01d, type: 2}
+    m_Data: {fileID: 11400000, guid: 3298554c24eb85346ab8818fdd6f6d28, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 5315b03fc5edfbe498a004840f01d72f, type: 2}
   - m_RefCount: 2
@@ -14546,8 +14320,7 @@ Tilemap:
     m_Data: {fileID: 2910192813999869782, guid: a447dc89e433fbc49a910c6fd98905a1,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -8731822008870779301, guid: a447dc89e433fbc49a910c6fd98905a1,
-      type: 3}
+    m_Data: {fileID: 21300000, guid: 018068df3bce81c41bff3aa0a183ede0, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -5759906108401034723, guid: a447dc89e433fbc49a910c6fd98905a1,
       type: 3}
@@ -15550,88 +15323,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 0.6}
   m_EdgeRadius: 0
---- !u!1 &1942212734
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1942212736}
-  - component: {fileID: 1942212735}
-  m_Layer: 0
-  m_Name: Level-Bottom
-  m_TagString: HiddenIn-Game
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1942212735
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942212734}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16aa57af4297d7d48ada005830c34ced, type: 3}
-  m_Color: {r: 0.032125235, g: 1, b: 0, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1942212736
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942212734}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90.04736, y: -28.279625, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 48
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051280048
 GameObject:
   m_ObjectHideFlags: 0
@@ -15873,86 +15564,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2122550086
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2122550088}
-  - component: {fileID: 2122550087}
-  m_Layer: 0
-  m_Name: Level-Top
-  m_TagString: HiddenIn-Game
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &2122550087
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122550086}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16aa57af4297d7d48ada005830c34ced, type: 3}
-  m_Color: {r: 1, g: 0.9250659, b: 0, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &2122550088
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122550086}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.94642, y: -9.051001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
