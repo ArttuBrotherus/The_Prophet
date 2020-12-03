@@ -158,7 +158,8 @@ public class CharacterController : MonoBehaviour
 
         if (body.velocity.x != 0)
         {
-            GetComponent<Animator>().enabled = true;
+            //temp
+            //GetComponent<Animator>().enabled = true;
             if (body.velocity.x > 0.01f)
             {
                 spriteRenderer.flipX = false;
