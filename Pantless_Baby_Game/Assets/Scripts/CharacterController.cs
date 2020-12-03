@@ -29,6 +29,8 @@ public class CharacterController : MonoBehaviour
     //used in determining whether character can drop off from a platform
     bool touchingBP = false;
 
+    public GameObject feet;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -148,7 +150,7 @@ public class CharacterController : MonoBehaviour
                     //If we're on top of a platform, press S and the jump button, we'll fall through the platform
 
                     // Getting the script of BP, executing its public function
-                    var effector = GameObject.FindGameObjectWithTag("BP").GetComponent<OneWayPlatformEffectorReversal>();
+                    var effector = feet.GetComponent<OneWayPlatformEffectorReversal>();
                     effector.EffectorReversal();
                     return;
                 }

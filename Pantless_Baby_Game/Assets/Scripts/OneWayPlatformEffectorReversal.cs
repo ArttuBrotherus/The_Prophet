@@ -6,13 +6,12 @@ using UnityEngine;
 
 public class OneWayPlatformEffectorReversal : MonoBehaviour
 {
-    private PlatformEffector2D effector;
     private IEnumerator coroutine;
 
     // Start is called before the first frame update
     void Start()
     {
-        effector = GetComponent<PlatformEffector2D>();
+        //
     }
 
     // Update is called once per frame
@@ -23,7 +22,7 @@ public class OneWayPlatformEffectorReversal : MonoBehaviour
 
     public void EffectorReversal()
     {
-        effector.rotationalOffset = 180f;
+        gameObject.layer = 0;
         coroutine = revBackRotation();
         StartCoroutine(coroutine);
     }
@@ -31,6 +30,6 @@ public class OneWayPlatformEffectorReversal : MonoBehaviour
     private IEnumerator revBackRotation()
     {
         yield return new WaitForSeconds(0.5f);
-        effector.rotationalOffset = 0.0f;
+        gameObject.layer = 11;
     }
 }

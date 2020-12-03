@@ -1367,7 +1367,6 @@ GameObject:
   - component: {fileID: 511387658}
   - component: {fileID: 511387657}
   - component: {fileID: 511387656}
-  - component: {fileID: 511387661}
   m_Layer: 9
   m_Name: Tilemap_Platform
   m_TagString: BP
@@ -2529,18 +2528,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1
   m_ExtrusionFactor: 0.00001
---- !u!114 &511387661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511387653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30cc816eb12c52a48aaa0275fa1cd007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &520600305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3981566755264399417, guid: bf804ccede1d2af4b910cafd1a964a1c,
@@ -4473,7 +4460,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1176793054}
   - component: {fileID: 1176793055}
-  m_Layer: 9
+  - component: {fileID: 1176793056}
+  m_Layer: 11
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4510,6 +4498,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -2}
   m_Size: {x: 0.8, y: 1}
   m_Direction: 1
+--- !u!114 &1176793056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176793053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cc816eb12c52a48aaa0275fa1cd007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1192302784
 GameObject:
   m_ObjectHideFlags: 0
@@ -15936,6 +15936,7 @@ MonoBehaviour:
   groundedCount: 0
   Rope_Particle: {fileID: 2504765569511403065, guid: 18e47b2972be8fc45bbd32bcfb50c59f,
     type: 3}
+  feet: {fileID: 1176793053}
 --- !u!114 &2051280055
 MonoBehaviour:
   m_ObjectHideFlags: 0
