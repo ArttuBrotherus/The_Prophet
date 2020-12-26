@@ -35,6 +35,7 @@ public class CharacterController : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         position = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -160,8 +161,7 @@ public class CharacterController : MonoBehaviour
 
         if (body.velocity.x != 0)
         {
-            //temp
-            //GetComponent<Animator>().enabled = true;
+            animator.SetBool("walking", true);
             if (body.velocity.x > 0.01f)
             {
                 spriteRenderer.flipX = false;
@@ -173,7 +173,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            GetComponent<Animator>().enabled = false;
+            animator.SetBool("walking", false);
         }
 
     }
