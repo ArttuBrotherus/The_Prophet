@@ -182,17 +182,20 @@ public class CharacterController : MonoBehaviour
     {
         if (!normal_movement) StopRotation();
 
-        if (collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet") return;
+        // Need to check both Player_Character and Feet colliders since Feet is only
+        // used with Blue Platform.
+        if (collision.otherCollider.name == "Feet") {
+            groundedCount++;
+            if (collision.gameObject.CompareTag("BP")) touchingBP = true;
+        }
 
-        groundedCount++;
-
-        if (collision.gameObject.CompareTag("BP")) touchingBP = true;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {    
-        if(collision.otherCollider.name != "Player_Character" && collision.otherCollider.name != "Feet") return;
-        groundedCount--;
+        if(collision.otherCollider.name == "Feet") {
+            groundedCount--;
+        }
     }
 
     void Jumping()

@@ -15664,7 +15664,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.6}
+  m_Size: {x: 0.95, y: 0.6}
   m_EdgeRadius: 0
 --- !u!1001 &1931982635
 PrefabInstance:
@@ -15856,7 +15856,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051280048}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 956f2e269cf4178408a8df4eba4ef502, type: 2}
   m_CullingMode: 0
