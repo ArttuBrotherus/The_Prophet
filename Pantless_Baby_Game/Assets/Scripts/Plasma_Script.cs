@@ -59,15 +59,15 @@ public class Plasma_Script : MonoBehaviour
 
     void flipSprite()
     {
+        //I feel like the statements below should be reversed but
+        //if it's not bugged (it isn't), don't fix it
         if (CurrentDirection.x == 1)
         {
-            //The trap is going to the right, no need to change the sprite from normal
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
         else if(CurrentDirection.x == -1)
         {
-            //Going to the left, have the sprite flipped
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
     }
 
