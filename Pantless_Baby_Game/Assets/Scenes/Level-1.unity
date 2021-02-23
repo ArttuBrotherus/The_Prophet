@@ -1488,6 +1488,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DToolTxt: {fileID: 1083899992}
+  markerParticle: {fileID: 2504765569511403065, guid: 18e47b2972be8fc45bbd32bcfb50c59f,
+    type: 3}
+  player: {fileID: 2051280048}
 --- !u!1 &262687756
 GameObject:
   m_ObjectHideFlags: 0
