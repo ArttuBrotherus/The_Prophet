@@ -108,9 +108,9 @@ public class CharacterController : MonoBehaviour
 
         //Change blockDistance mid-flight:
         if (Input.GetKey(KeyCode.S) && !(Input.GetKey(KeyCode.W))){
-            blockDistance += Time.deltaTime * 1.25f;
+            blockDistance += Time.deltaTime * 1.5f;
         }else if(Input.GetKey(KeyCode.W) && !(Input.GetKey(KeyCode.S))){
-            blockDistance -= Time.deltaTime * 1.25f;
+            blockDistance -= Time.deltaTime * 1.5f;
         }
 
         float ukkoX = Mathf.Cos(blockAngle) * blockDistance + pearl_block.position.x;
