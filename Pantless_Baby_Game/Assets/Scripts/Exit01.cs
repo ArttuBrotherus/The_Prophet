@@ -28,6 +28,7 @@ public class Exit01 : MonoBehaviour
 
     private void OnTriggerEnter2D()
     {
+        Debug.Log("J'arrive");
         readyExit = true;
     }
 
