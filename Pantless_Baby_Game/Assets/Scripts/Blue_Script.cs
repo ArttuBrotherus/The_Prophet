@@ -5,8 +5,6 @@ using UnityEngine;
 public class Blue_Script : MonoBehaviour
 {
     public float cycleTime;
-    float progress = 0f;
-    float dir = 1f;
 
     SpriteRenderer SRenderer;
 
@@ -16,18 +14,12 @@ public class Blue_Script : MonoBehaviour
         SRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        progress = progress + dir * Time.deltaTime;
-        
-        if(progress > 0.5f * cycleTime && progress < 0)
-        {
-            dir = dir == 1 ? -1 : 1;
-        }
-        else
-        {
-            SRenderer.color = new Color(1f, 110f, 153f, progress / (0.5f * cycleTime));
-        }
+        var cycles = Time.time / cycleTime;
+        var cycleFraction = cycles - Mathf.Floor(cycles);
+        var colorFraction = cycleFraction < 0.5 ? cycleFraction : 1 - cycleFraction;
+
+        SRenderer.color = new Color(0f, 0.43f, 0.6f, colorFraction * 2);
     }
 }
