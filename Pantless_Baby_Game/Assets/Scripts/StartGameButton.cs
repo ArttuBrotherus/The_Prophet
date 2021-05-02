@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class StartGame : MonoBehaviour
+public class StartGameButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start of the button");
+        //
     }
 
     // Update is called once per frame
@@ -20,12 +20,7 @@ public class StartGame : MonoBehaviour
 
     public void startTheGame()
     {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    public void OnMouseDown()
-    {
-        Debug.Log("button mouse down");
+        SceneManager.LoadScene("Level-1");
     }
 
 }
