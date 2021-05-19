@@ -5,17 +5,36 @@ using UnityEngine;
 public class Kangoroo : MonoBehaviour
 {
 
-    public Vector2 jumpVel;
+    public float jumpVelX;
+    public float jumpVelY;
+
+    private IEnumerator coroutine;
+
+    public int groundedCount = 0;
+    Rigidbody2D roo;
 
     // Start is called before the first frame update
     void Start()
     {
+        roo = GetComponent<Rigidbody2D>();
 
-        if(jumpVel == new Vector2 (0,0))
+        if(jumpVelX == 0)
         {
-            //change the two values to default
+            jumpVelX = 3f;
+            jumpVelY = 2.5f;
+        }
 
-            jumpVel = new Vector2(1, 0);
+        coroutine = Jump();
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator Jump()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f);
+
+            roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY);
         }
     }
 
@@ -24,4 +43,39 @@ public class Kangoroo : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (relevantCollider(collision))
+        {
+            groundedCount++;
+            StartCoroutine(coroutine);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (relevantCollider(collision))
+        {
+            groundedCount--;
+            if(groundedCount == 0)
+            {
+                StopCoroutine(coroutine);
+            }
+        }
+    }
+
+    bool relevantCollider(Collision2D col)
+    {
+        if(col.collider.name != "Player_Character"
+            || col.collider.name != "Feet")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }
