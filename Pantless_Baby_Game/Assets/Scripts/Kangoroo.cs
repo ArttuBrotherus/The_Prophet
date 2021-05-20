@@ -30,9 +30,12 @@ public class Kangoroo : MonoBehaviour
 
     private IEnumerator Jump()
     {
+
+        yield return new WaitForSeconds(10f);
+
         while (true)
         {
-            yield return new WaitForSeconds(10f);
+            //yield return new WaitForSeconds(10f);
 
             roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY);
         }
@@ -68,7 +71,7 @@ public class Kangoroo : MonoBehaviour
     bool relevantCollider(Collision2D col)
     {
         if(col.collider.name != "Player_Character"
-            || col.collider.name != "Feet")
+            && col.collider.name != "Feet")
         {
             return true;
         }
