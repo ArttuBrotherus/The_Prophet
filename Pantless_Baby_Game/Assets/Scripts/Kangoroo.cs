@@ -8,8 +8,6 @@ public class Kangoroo : MonoBehaviour
     public float jumpVelX;
     public float jumpVelY;
 
-    private IEnumerator coroutine;
-
     public int groundedCount = 0;
     Rigidbody2D roo;
 
@@ -17,28 +15,17 @@ public class Kangoroo : MonoBehaviour
     void Start()
     {
         roo = GetComponent<Rigidbody2D>();
-
         if(jumpVelX == 0)
         {
             jumpVelX = 3f;
             jumpVelY = 2.5f;
         }
-
-        coroutine = Jump();
-        StartCoroutine(coroutine);
     }
 
     private IEnumerator Jump()
     {
-
-        yield return new WaitForSeconds(10f);
-
-        while (true)
-        {
-            //yield return new WaitForSeconds(10f);
-
-            roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY);
-        }
+        yield return new WaitForSeconds(1f);
+        roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY);
     }
 
     // Update is called once per frame
@@ -52,7 +39,8 @@ public class Kangoroo : MonoBehaviour
         if (relevantCollider(collision))
         {
             groundedCount++;
-            StartCoroutine(coroutine);
+            roo.velocity = new Vector2(0, 0);
+            StartCoroutine("Jump");
         }
     }
 
@@ -61,10 +49,7 @@ public class Kangoroo : MonoBehaviour
         if (relevantCollider(collision))
         {
             groundedCount--;
-            if(groundedCount == 0)
-            {
-                StopCoroutine(coroutine);
-            }
+            StopCoroutine("Jump");
         }
     }
 
