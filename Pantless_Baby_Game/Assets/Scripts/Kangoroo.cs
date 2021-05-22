@@ -11,13 +11,15 @@ public class Kangoroo : MonoBehaviour
     public int groundedCount = 0;
     Rigidbody2D roo;
 
+    ContactPoint2D[] contacts = new ContactPoint2D[100];
+
     // Start is called before the first frame update
     void Start()
     {
         roo = GetComponent<Rigidbody2D>();
         if(jumpVelX == 0)
         {
-            jumpVelX = 3f;
+            jumpVelX = 2f;
             jumpVelY = 2.5f;
         }
     }
@@ -25,7 +27,7 @@ public class Kangoroo : MonoBehaviour
     private IEnumerator Jump()
     {
         yield return new WaitForSeconds(1f);
-        roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY);
+        roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY) * 2;
     }
 
     // Update is called once per frame
@@ -39,7 +41,27 @@ public class Kangoroo : MonoBehaviour
         if (relevantCollider(collision))
         {
             groundedCount++;
-            roo.velocity = new Vector2(0, 0);
+
+            var contactNo = collision.GetContacts(contacts);
+            var hitWall = false;
+
+            for (int i = 0; i < contactNo; i++)
+            {
+                if(contacts[i].point.y > this.transform.position.y - 0.4f)
+                {
+                    //Wall                    
+                    hitWall = true;
+                }
+            }
+            if (hitWall)
+            {
+                this.transform.localScale = new Vector3(this.transform.localScale.x * -1f, 1f, 1f);
+                roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, roo.velocity.y) * 2;
+            }
+            else
+            {
+                roo.velocity = new Vector2(0, 0);
+            }
             StartCoroutine("Jump");
         }
     }
