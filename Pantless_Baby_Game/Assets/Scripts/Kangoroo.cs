@@ -7,11 +7,14 @@ public class Kangoroo : MonoBehaviour
 
     public float jumpVelX;
     public float jumpVelY;
+    public float waitTime;
 
-    public int groundedCount = 0;
+    int groundedCount = 0;
     Rigidbody2D roo;
 
     ContactPoint2D[] contacts = new ContactPoint2D[100];
+
+    GameObject rooWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +22,22 @@ public class Kangoroo : MonoBehaviour
         roo = GetComponent<Rigidbody2D>();
         if(jumpVelX == 0)
         {
-            jumpVelX = 2f;
-            jumpVelY = 2.5f;
+            jumpVelX = 4f;
+            jumpVelY = 5f;
         }
+        if(waitTime == 0)
+        {
+            waitTime = 1f;
+        }
+
+        rooWeapon = this.transform.GetChild(0).gameObject;
+        rooWeapon.SetActive(false);
     }
 
     private IEnumerator Jump()
     {
-        yield return new WaitForSeconds(1f);
-        roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY) * 2;
+        yield return new WaitForSeconds(waitTime);
+        roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY);
     }
 
     // Update is called once per frame
@@ -56,12 +66,15 @@ public class Kangoroo : MonoBehaviour
             if (hitWall)
             {
                 this.transform.localScale = new Vector3(this.transform.localScale.x * -1f, 1f, 1f);
-                roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, roo.velocity.y) * 2;
+                roo.velocity = new Vector2(jumpVelX * this.transform.localScale.x, roo.velocity.y);
             }
             else
             {
                 roo.velocity = new Vector2(0, 0);
             }
+
+            rooWeapon.SetActive(false);
+
             StartCoroutine("Jump");
         }
     }
@@ -72,6 +85,7 @@ public class Kangoroo : MonoBehaviour
         {
             groundedCount--;
             StopCoroutine("Jump");
+            rooWeapon.SetActive(true);
         }
     }
 
