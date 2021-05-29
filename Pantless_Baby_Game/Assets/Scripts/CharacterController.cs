@@ -66,6 +66,8 @@ public class CharacterController : MonoBehaviour
         //back to normal
         var target_script = GameObject.FindWithTag("Target").GetComponent<Target>();
         target_script.changeSpriteBack();
+
+        feet.layer = 11;
     }
 
     public void StartRotation(Transform center_of_target, float orbiting_direction_number)
@@ -89,6 +91,10 @@ public class CharacterController : MonoBehaviour
         blockAngle = correctBlockAngle(deltaX, deltaY);
 
         blockDistance = Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        //Feet layer changed so that player doesn't interact
+        //with BP mid-orbit 
+        feet.layer = 8;
     }
 
     float correctBlockAngle(float deltaX, float deltaY)
