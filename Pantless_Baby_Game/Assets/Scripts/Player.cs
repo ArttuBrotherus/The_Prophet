@@ -11,10 +11,13 @@ public class Player : MonoBehaviour {
 
     Component[] colliders;
 
+    CharacterController contr;
+
     private void Start()
     {
         
         gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GamePoints>();
+        contr = this.GetComponent<CharacterController>();
     }
 
     void Update() {
@@ -52,6 +55,8 @@ public class Player : MonoBehaviour {
         {
             col.enabled = false;
         }
+
+        contr.StopRotation();
     }
 
 }

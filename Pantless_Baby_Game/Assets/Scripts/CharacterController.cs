@@ -54,7 +54,7 @@ public class CharacterController : MonoBehaviour
         return (normal_movement && groundedCount == 0);
     }
 
-    void StopRotation()
+    public void StopRotation()
     {
         normal_movement = true;
 
