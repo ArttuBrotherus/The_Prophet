@@ -19,6 +19,7 @@ public class Plasma_Script : MonoBehaviour
 
     int Step = 0;
     float travelledDistance = 0;
+    public float speed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,8 @@ public class Plasma_Script : MonoBehaviour
         //left
 
         flipSprite();
+
+        if (speed == 0f) speed = 1f;
 
     }
 
@@ -45,7 +48,7 @@ public class Plasma_Script : MonoBehaviour
         var x = CurrentStep.startPoint.x + CurrentDirection.x * travelledDistance + 0.5f;
         var y = CurrentStep.startPoint.y + CurrentDirection.y * travelledDistance - 0.5f;
         transform.position = new Vector2(x, y);
-        travelledDistance += Time.deltaTime * 1.0f;
+        travelledDistance += Time.deltaTime * speed;
 
         if(travelledDistance > CurrentStep.distance)
         {
