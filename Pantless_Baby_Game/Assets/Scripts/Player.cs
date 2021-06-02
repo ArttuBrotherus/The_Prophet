@@ -43,8 +43,21 @@ public class Player : MonoBehaviour {
     void Respawn()
     {
         transform.position = spawnHere;
+
         dead = false;
-        //transform. = new Vector3(0, 0, 0);
+
+        //remember, THIS is the way to rotate
+        transform.Rotate(0, 0, 180f);
+
+        this.GetComponent<CharacterController>().enabled = true;
+        this.GetComponent<Collider2D>().enabled = true;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = true;
+
+        colliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            col.enabled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

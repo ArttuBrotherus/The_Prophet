@@ -25,7 +25,7 @@ public class MidwayScript : MonoBehaviour
     {
         if(collision.gameObject.name == "Player_Character")
         {
-            prophet.updateSpawn(transform.position + new Vector3(0.5f, -0.25f, 0));
+            prophet.updateSpawn(transform.position + new Vector3(- 0.5f, 0, 0));
             this.GetComponent<BoxCollider2D>().enabled = false;
             S_Renderer.color = new Color(1f, 1f, 1f, 0.5f);
         }
