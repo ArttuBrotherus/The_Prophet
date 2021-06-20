@@ -22,12 +22,17 @@ public class MenTxtScript : MonoBehaviour
 
     public GameObject mTexts;
 
+    public GameObject gramophone;
+    AudioPlayback sndPlayer;
+    public AudioClip rHearts;
+
     // Start is called before the first frame update
     void Start()
     {
         indica = hoodIndicator.GetComponent<RectTransform>();
         staCon = hoodIndicator.GetComponent<StartControl>();
         img = hoodIndicator.GetComponent<Image>();
+        sndPlayer = gramophone.GetComponent<AudioPlayback>();
 
         staCon.enabled = false;
         img.color = new Color(1f, 1f, 1f, 0f);
@@ -38,6 +43,9 @@ public class MenTxtScript : MonoBehaviour
     private IEnumerator beforeFadeIn()
     {
         yield return new WaitForSeconds(1f);
+
+        sndPlayer.oneSound(rHearts, 0.75f);
+
         phase = 1;
         yield break;
     }
