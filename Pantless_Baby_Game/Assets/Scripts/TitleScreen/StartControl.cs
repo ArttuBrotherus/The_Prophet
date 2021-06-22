@@ -10,6 +10,9 @@ public class StartControl : MonoBehaviour
 
     int menuOpti = 2;
 
+    public GameObject blackScreen;
+    BlackStart blackSpt;
+
     //menu-texts:
     //public GameObject mTexts;
 
@@ -17,7 +20,7 @@ public class StartControl : MonoBehaviour
     void Start()
     {
         recTra = this.GetComponent<RectTransform>();
-        //mTexts.SetActive(true);
+        blackSpt = blackScreen.GetComponent<BlackStart>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class StartControl : MonoBehaviour
         }
         else if (menuOpti == 1)
         {
-            Debug.Log("Start");
+            blackSpt.enabled = true;
         }
         else
         {
