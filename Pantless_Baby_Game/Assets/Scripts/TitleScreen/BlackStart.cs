@@ -27,7 +27,7 @@ public class BlackStart : MonoBehaviour
         blaAlpha += Time.deltaTime * 0.5f;
         if(blaAlpha > 1f)
         {
-            SceneManager.LoadScene("Level-1");
+            SceneManager.LoadScene("1stCutscene");
         }
         rend.color = new Color(0f, 0f, 0f, blaAlpha);
     }
