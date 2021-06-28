@@ -8,7 +8,6 @@ public class BlackStart : MonoBehaviour
 {
 
     public GameObject selectionPointer;
-    StartControl beginControl;
 
     Image rend;
     float blaAlpha = 0;
@@ -16,7 +15,7 @@ public class BlackStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        beginControl = selectionPointer.GetComponent<StartControl>();
+        var beginControl = selectionPointer.GetComponent<StartMenuScript>();
         beginControl.enabled = false;
         rend = GetComponent<Image>();
     }

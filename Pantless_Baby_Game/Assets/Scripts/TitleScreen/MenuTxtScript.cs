@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenTxtScript : MonoBehaviour
+public class MenuTxtScript : MonoBehaviour
 {
 
     //This script handles a lot of the 'haxxed' animations
@@ -11,7 +11,7 @@ public class MenTxtScript : MonoBehaviour
 
     public GameObject hoodIndicator;
     RectTransform indica;
-    StartControl staCon;
+    StartMenuScript staCon;
 
     Image img;
     int phase = 0;
@@ -30,7 +30,7 @@ public class MenTxtScript : MonoBehaviour
     void Start()
     {
         indica = hoodIndicator.GetComponent<RectTransform>();
-        staCon = hoodIndicator.GetComponent<StartControl>();
+        staCon = hoodIndicator.GetComponent<StartMenuScript>();
         img = hoodIndicator.GetComponent<Image>();
         sndPlayer = gramophone.GetComponent<AudioPlayback>();
 
