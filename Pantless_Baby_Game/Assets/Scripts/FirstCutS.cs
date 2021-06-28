@@ -8,9 +8,7 @@ public class FirstCutS : MonoBehaviour
     //access via editor
     public GameObject DALText;
 
-    float phaseTime;
     string phase = "start";
-    string nextPhase = "blackFadesOut";
 
     SpriteRenderer bRend;
     float blackAlpha = 1f;
@@ -19,15 +17,13 @@ public class FirstCutS : MonoBehaviour
     void Start()
     {
         bRend = GetComponent<SpriteRenderer>();
-        phaseTime = 1f;
-        StartCoroutine("waitNewPhase");
+        StartCoroutine(waitNewPhase(1f, "blackFadesOut"));
     }
 
-    private IEnumerator waitNewPhase()
+    private IEnumerator waitNewPhase(float duration, string nextPhase)
     {
-        yield return new WaitForSeconds(phaseTime);
+        yield return new WaitForSeconds(duration);
         phase = nextPhase;
-        StopCoroutine("waitNewPhase");
     }
 
     // Update is called once per frame
@@ -36,7 +32,7 @@ public class FirstCutS : MonoBehaviour
         if (phase == "blackFadesOut")
         {
             fadeBlackOut();
-        }else if(phase == "addText")
+        } else if(phase == "addText")
         {
             DALText.SetActive(true);
             phase = "";
@@ -50,9 +46,7 @@ public class FirstCutS : MonoBehaviour
         {
             bRend.color = new Color(0f, 0f, 0f, 0f);
             phase = "";
-            phaseTime = 2.25f;
-            nextPhase = "addText";
-            StartCoroutine("waitNewPhase");
+            StartCoroutine(waitNewPhase(2.25f, "addText"));
         }
         else
         {
@@ -60,15 +54,4 @@ public class FirstCutS : MonoBehaviour
         }
     }
 
-
-
-    /*
-     
-    private IEnumerator Jump()
-    {
-        yield return new WaitForSeconds(waitTime);
-        roo.velocity = new Vector2(jumpVelX * this.transform.lossyScale.x, jumpVelY);
-    }
-
-    */
 }
