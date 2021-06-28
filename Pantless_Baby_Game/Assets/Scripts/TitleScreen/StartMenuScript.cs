@@ -49,6 +49,7 @@ public class StartMenuScript: MonoBehaviour
         else if (menuOpti == 1)
         {
             blackSpt.enabled = true;
+            this.enabled = false;
         }
         else
         {
