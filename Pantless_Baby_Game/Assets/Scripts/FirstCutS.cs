@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FirstCutS : MonoBehaviour
 {
@@ -8,50 +9,58 @@ public class FirstCutS : MonoBehaviour
     //access via editor
     public GameObject DALText;
 
-    string phase = "start";
-
     SpriteRenderer bRend;
     float blackAlpha = 1f;
+
+    Tuple<float, string>[] phases =
+        {new Tuple<float, string> (1f, "start"),
+        new Tuple<float, string> (3f, "blackFadesOut"),
+        new Tuple<float, string> (2.25f, "addText")};
+    int phaseIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         bRend = GetComponent<SpriteRenderer>();
-        StartCoroutine(waitNewPhase(1f, "blackFadesOut"));
+        StartCoroutine(executePhase());
     }
 
-    private IEnumerator waitNewPhase(float duration, string nextPhase)
+    private IEnumerator executePhase()
     {
-        yield return new WaitForSeconds(duration);
-        phase = nextPhase;
+        while(true) { 
+            yield return new WaitForSeconds(currentPhase.Item1);
+            switch (currentPhase.Item2)
+            {
+                case "addText":
+                    DALText.SetActive(true);
+                    break;
+            }
+            if (phaseIndex < phases.Length - 1)
+            {
+                phaseIndex++;
+            } else
+            {
+                break;
+            }
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (phase == "blackFadesOut")
+        if(currentPhase.Item2 == "blackFadesOut")
         {
-            fadeBlackOut();
-        } else if(phase == "addText")
-        {
-            DALText.SetActive(true);
-            phase = "";
+            blackAlpha -= Time.deltaTime * 0.5f;
+            bRend.color = new Color(0,0,0, blackAlpha < 0f ? 0: blackAlpha);
         }
     }
 
-    void fadeBlackOut()
+    Tuple<float, string> currentPhase
     {
-        blackAlpha -= Time.deltaTime * 0.5f;
-        if(blackAlpha < 0f)
-        {
-            bRend.color = new Color(0f, 0f, 0f, 0f);
-            phase = "";
-            StartCoroutine(waitNewPhase(2.25f, "addText"));
-        }
-        else
-        {
-            bRend.color = new Color(0f, 0f, 0f, blackAlpha);
+        get 
+        { 
+            return phases[phaseIndex]; 
         }
     }
-
 }
