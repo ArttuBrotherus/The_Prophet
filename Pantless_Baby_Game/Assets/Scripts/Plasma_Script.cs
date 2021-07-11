@@ -66,11 +66,12 @@ public class Plasma_Script : MonoBehaviour
         //if it's not bugged (it isn't), don't fix it
         if (CurrentDirection.x == 1)
         {
-            spriteRenderer.flipX = true;
+            //spriteRenderer.flipX = true;
+            transform.localScale = new Vector2(1f, 1f);
         }
         else if(CurrentDirection.x == -1)
         {
-            spriteRenderer.flipX = false;
+            transform.localScale = new Vector2(- 1f, 1f);
         }
     }
 
