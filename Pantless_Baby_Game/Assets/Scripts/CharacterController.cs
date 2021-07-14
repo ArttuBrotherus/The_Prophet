@@ -64,16 +64,20 @@ public class CharacterController : MonoBehaviour
     {
         normal_movement = true;
 
-        foreach(GameObject particle in rope_particles) Destroy(particle);
+        if (rope_particles != null) {
+            foreach (GameObject particle in rope_particles) Destroy(particle);
+
+            //Orbiting has ended so the program changes the target block sprite
+            //back to normal
+            var target_script = GameObject.FindWithTag("Target").GetComponent<Target>();
+            target_script.changeSpriteBack();
+        }
 
         GetComponent<Rigidbody2D>().gravityScale = 1;
 
-        //Orbiting has ended so the program changes the target block sprite
-        //back to normal
-        var target_script = GameObject.FindWithTag("Target").GetComponent<Target>();
-        target_script.changeSpriteBack();
-
         feet.layer = 11;
+
+        rope_particles = null;
     }
 
     public void StartRotation(Transform center_of_target, float orbiting_direction_number)
