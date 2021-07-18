@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class FirstCutS : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class FirstCutS : MonoBehaviour
     float blackAlpha = 1f;
 
     Tuple<float, string>[] phases =
-        {new Tuple<float, string> (1f, "start"),
+        {
+        new Tuple<float, string> (1f, "start"),
         new Tuple<float, string> (3f, "blackFadesOut"),
-        new Tuple<float, string> (2.25f, "addText")};
+        new Tuple<float, string> (2.25f, "addText"),
+        new Tuple<float, string> (2f, "level1"),
+        };
     int phaseIndex = 0;
 
     // Start is called before the first frame update
@@ -33,6 +37,9 @@ public class FirstCutS : MonoBehaviour
             {
                 case "addText":
                     DALText.SetActive(true);
+                    break;
+                case "level1":
+                    SceneManager.LoadScene("Level-1");
                     break;
             }
             if (phaseIndex < phases.Length - 1)
