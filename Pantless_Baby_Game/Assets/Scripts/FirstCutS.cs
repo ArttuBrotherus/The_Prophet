@@ -17,8 +17,8 @@ public class FirstCutS : MonoBehaviour
         {
         new Tuple<float, string> (1f, "start"),
         new Tuple<float, string> (3f, "blackFadesOut"),
-        new Tuple<float, string> (2.25f, "addText"),
-        new Tuple<float, string> (2f, "level1"),
+        new Tuple<float, string> (1.5f, "addText"),
+        new Tuple<float, string> (3f, "level1"),
         };
     int phaseIndex = 0;
 

@@ -31,11 +31,15 @@ public class CharacterController : MonoBehaviour
 
     public GameObject feet;
 
+    public AudioClip jumpSound;
+    AudioPlayback sndPlayer;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         position = GetComponent<Transform>();
         animator = GetComponent<Animator>();
+        sndPlayer = GameObject.FindWithTag("Gramophone").GetComponent<AudioPlayback>();
     }
 
     // Update is called once per frame
@@ -216,6 +220,7 @@ public class CharacterController : MonoBehaviour
 
     void Jumping()
     {
+        sndPlayer.oneSound(jumpSound, 0.075f);
         var body = GetComponent<Rigidbody2D>();
         body.velocity = new Vector2(body.velocity.x, jumpTakeOffSpeed);
     }

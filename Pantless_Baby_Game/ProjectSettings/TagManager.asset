@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - HiddenIn-Game
   - LevelProportions
+  - Gramophone
   layers:
   - Default
   - TransparentFX

@@ -14,12 +14,16 @@ public class Player : MonoBehaviour {
     CharacterController contr;
     Vector3 spawnHere;
 
+    public AudioClip defeatSound;
+    AudioPlayback sndPlayer;
+
     private void Start()
     {
         
         gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GamePoints>();
         contr = this.GetComponent<CharacterController>();
         spawnHere = transform.position;
+        sndPlayer = GameObject.FindWithTag("Gramophone").GetComponent<AudioPlayback>();
     }
 
     public void updateSpawn(Vector3 newCoord)
@@ -71,6 +75,7 @@ public class Player : MonoBehaviour {
 
     public void Die (){
         if (dead) return;
+        sndPlayer.oneSound(defeatSound, 0.325f);
         dead = true;
         this.GetComponent<CharacterController>().enabled = false;
         transform.Rotate(0,0,180f);
