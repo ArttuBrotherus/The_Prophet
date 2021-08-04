@@ -75,7 +75,7 @@ public class Player : MonoBehaviour {
 
     public void Die (){
         if (dead) return;
-        sndPlayer.oneSound(defeatSound, 0.325f);
+        sndPlayer.oneSound(defeatSound, 0.31f);
         dead = true;
         this.GetComponent<CharacterController>().enabled = false;
         transform.Rotate(0,0,180f);
