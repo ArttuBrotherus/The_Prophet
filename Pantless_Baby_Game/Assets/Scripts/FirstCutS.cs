@@ -18,7 +18,10 @@ public class FirstCutS : MonoBehaviour
         new Tuple<float, string> (1f, "start"),
         new Tuple<float, string> (3f, "blackFadesOut"),
         new Tuple<float, string> (1.5f, "addText"),
-        new Tuple<float, string> (3.5f, "level1"),
+        new Tuple<float, string> (3.5f, "textBeforeBlack"),
+        new Tuple<float, string> (2.25f, "blackFadesIn"),
+        new Tuple<float, string> (0.1f, "whiteness"),
+        new Tuple<float, string> (0.15f, "level1")
         };
     int phaseIndex = 0;
 
@@ -37,9 +40,13 @@ public class FirstCutS : MonoBehaviour
             {
                 case "addText":
                     DALText.SetActive(true);
+                    blackAlpha = 0f;
                     break;
                 case "level1":
                     SceneManager.LoadScene("Level-1");
+                    break;
+                case "whiteness":
+                    bRend.color = new Color(1, 1, 1, 1);
                     break;
             }
             if (phaseIndex < phases.Length - 1)
@@ -59,7 +66,12 @@ public class FirstCutS : MonoBehaviour
         if(currentPhase.Item2 == "blackFadesOut")
         {
             blackAlpha -= Time.deltaTime * 0.5f;
-            bRend.color = new Color(0,0,0, blackAlpha < 0f ? 0: blackAlpha);
+            bRend.color = new Color(0,0,0, blackAlpha < 0f ? 0 : blackAlpha);
+        }
+        if (currentPhase.Item2 == "blackFadesIn")
+        {
+            blackAlpha += Time.deltaTime;
+            bRend.color = new Color(0, 0, 0, blackAlpha > 1f ? 1 : blackAlpha);
         }
     }
 
