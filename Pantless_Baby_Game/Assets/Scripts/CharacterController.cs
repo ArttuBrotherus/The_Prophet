@@ -164,19 +164,17 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && groundedCount > 0)
         {         
-            if (touchingBP)
-            {
-                if(Input.GetKey(KeyCode.S))
-                {
-                    //If we're on top of a platform, press S and the jump button, we'll fall through the platform
-
-                    // Getting the script of BP, executing its public function
-                    var effector = feet.GetComponent<OneWayPlatformEffectorReversal>();
-                    effector.EffectorReversal();
-                    return;
-                }
-            }
             Jumping();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) && touchingBP)
+        {
+            //If we're on top of a platform, press S so we'll fall through the platform
+
+            // Getting the script of BP, executing its public function
+            var effector = feet.GetComponent<OneWayPlatformEffectorReversal>();
+            effector.EffectorReversal();
+            return;
         }
 
         if (body.velocity.x != 0)

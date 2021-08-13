@@ -18,10 +18,10 @@ public class FirstCutS : MonoBehaviour
         new Tuple<float, string> (1f, "start"),
         new Tuple<float, string> (3f, "blackFadesOut"),
         new Tuple<float, string> (1.5f, "addText"),
-        new Tuple<float, string> (3.5f, "textBeforeBlack"),
-        new Tuple<float, string> (2.25f, "blackFadesIn"),
+        new Tuple<float, string> (4.5f, "textBeforeBlack"),
+        new Tuple<float, string> (1.75f, "blackFadesIn"),
         new Tuple<float, string> (0.1f, "whiteness"),
-        new Tuple<float, string> (0.15f, "level1")
+        new Tuple<float, string> (0.05f, "level1")
         };
     int phaseIndex = 0;
 
@@ -70,7 +70,7 @@ public class FirstCutS : MonoBehaviour
         }
         if (currentPhase.Item2 == "blackFadesIn")
         {
-            blackAlpha += Time.deltaTime;
+            blackAlpha += Time.deltaTime * 1.25f;
             bRend.color = new Color(0, 0, 0, blackAlpha > 1f ? 1 : blackAlpha);
         }
     }
